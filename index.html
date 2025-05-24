@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KuboKanayo Creative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+ <body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="site-logo">KuboKanayo Creative</a>
+            <div class="nav-links">
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+    <header class="hero-section">
+        </header>
+
+    </header>
+
+    <section id="homepage-about" class="homepage-section about-snippet">
+        <h2>Who are We?</h2>
+        <p class="intro-text">
+            KuboKanayo Creative is a B2C-focused creative agency that builds standout brand campaigns powered by bold 2D and 3D visual storytelling. We specialize in awareness-driven strategies that help consumer brands rise above the noise and become unforgettable.
+        </p>
+        <a href="about.html" class="button">Learn More About Us</a>
+    </section>
+
+    <section id="homepage-services" class="homepage-section services-overview">
+        <h2>Our Core Creative Services</h2>
+        <p>From captivating motion graphics and digital design to product-focused content and immersive brand visuals, we craft creative that moves people — and moves culture.</p>
+        <div class="services-mini-grid">
+            <div class="service-summary-item">
+                <h3>Motion Graphics</h3>
+                <p>Dynamic storytelling that brings concepts to life.</p>
+            </div>
+            <div class="service-summary-item">
+                <h3>Digital Design</h3>
+                <p>Visually compelling assets for all digital platforms.</p>
+            </div>
+            <div class="service-summary-item">
+                <h3>Product Content</h3>
+                <p>Highlighting your products with stunning visuals.</p>
+            </div>
+            <div class="service-summary-item">
+                <h3>Immersive Visuals</h3>
+                <p>Creating unforgettable brand experiences.</p>
+            </div>
+        </div>
+        <a href="services.html" class="button secondary">See All Services</a>
+    </section>
+
+    <section id="homepage-portfolio" class="homepage-section featured-portfolio">
+        <h2>Featured Work</h2>
+        <p>A glimpse into our disruptive designs and captivating creations.</p>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="images/portfolio-item-1.jpg" alt="Featured Project 1">
+                <h3>[Project Title 1]</h3>
+                <p>[Brief description or client name]</p>
+                <a href="portfolio.html" class="item-link">View Project</a>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/portfolio-item-2.jpg" alt="Featured Project 2">
+                <h3>[Project Title 2]</h3>
+                <p>[Brief description or client name]</p>
+                <a href="portfolio.html" class="item-link">View Project</a>
+            </div>
+            <div class="portfolio-item">
+                <img src="images/portfolio-item-3.jpg" alt="Featured Project 3">
+                <h3>[Project Title 3]</h3>
+                <p>[Brief description or client name]</p>
+                <a href="portfolio.html" class="item-link">View Project</a>
+            </div>
+             <div class="portfolio-item">
+                <img src="images/portfolio-item-4.jpg" alt="Featured Project 4">
+                <h3>[Project Title 4]</h3>
+                <p>[Brief description or client name]</p>
+                <a href="portfolio.html" class="item-link">View Project</a>
+            </div>
+        </div>
+        <a href="portfolio.html" class="button">View All Our Work</a>
+    </section>
+
+    <section id="homepage-cta" class="homepage-section cta-section">
+        <h2>Ready to Create Something Unforgettable?</h2>
+        <p>Let's turn your message into campaigns that resonate, engage, and drive lasting attention.</p>
+        <a href="contact.html" class="button">Get a Quote / Collaborate</a>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> KuboKanayo Creative. All rights reserved.</p>
+        <p>"Designed to Disrupt - Crafted to Captivate"</p>
+    </footer>
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KuboKanayo Creative - Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="site-logo">KuboKanayo Creative</a> <div class="nav-links">
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="portfolio" class="portfolio-section">
+        <h2>Our Work</h2>
+        <p>Explore our diverse portfolio of bold visual storytelling, categorized by service.</p>
+        <div class="filter-buttons">
+            <button class="button filter-button active" data-filter="all">All Projects</button>
+            <button class="button filter-button" data-filter="motion-graphics">Motion Graphics</button>
+            <button class="button filter-button" data-filter="digital-design">Digital Design</button>
+            <button class="button filter-button" data-filter="product-content">Product-Focused Content</button>
+            <button class="button filter-button" data-filter="immersive-visuals">Immersive Brand Visuals</button>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="motion-graphics">
+                <img src="images/portfolio-item-1.jpg" alt="Motion Graphics Project: Urban Flow">
+                <h3>Urban Flow Animation</h3>
+                <p>A dynamic motion graphics piece designed for a new streetwear brand launch, focusing on fluid transitions and bold typography.</p>
+                <a href="#" class="item-link">View Project</a> </div>
+            <div class="portfolio-item" data-category="digital-design">
+                <img src="images/portfolio-item-2.jpg" alt="Digital Design Project: App UI Concept">
+                <h3>Zenith App UI/UX</h3>
+                <p>User interface and experience design for a minimalist meditation app, emphasizing intuitive navigation and calming aesthetics.</p>
+                <a href="#" class="item-link">View Project</a>
+            </div>
+            <div class="portfolio-item" data-category="product-content">
+                <img src="images/portfolio-item-3.jpg" alt="Product Content Project: Chroma Headphones">
+                <h3>Chroma Headphones Launch</h3>
+                <p>3D product visualization and content creation for a new line of high-fidelity headphones, showcasing product features and lifestyle integration.</p>
+                <a href="#" class="item-link">View Project</a>
+            </div>
+            <div class="portfolio-item" data-category="immersive-visuals digital-design"> <img src="images/portfolio-item-4.jpg" alt="Immersive Visuals Project: Aurora Experiance">
+                <h3>Aurora Brand Experience</h3>
+                <p>Development of interactive immersive visuals for a pop-up art installation, designed to evoke wonder and brand engagement.</p>
+                <a href="#" class="item-link">View Project</a>
+            </div>
+            </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> KuboKanayo Creative. All rights reserved.</p>
+        <p>"Designed to Disrupt - Crafted to Captivate"</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Portfolio Filtering Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const filterButtons = document.querySelectorAll('.filter-button');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const portfolioGrid = document.querySelector('.portfolio-grid'); // Get the grid container
+
+            function filterPortfolio(category) {
+                // Remove existing items with animation
+                portfolioGrid.classList.add('fade-out');
+
+                setTimeout(() => {
+                    portfolioItems.forEach(item => {
+                        const itemCategories = item.dataset.category ? item.dataset.category.split(' ') : [];
+
+                        if (category === 'all' || itemCategories.includes(category)) {
+                            item.style.display = 'block'; // Show item
+                        } else {
+                            item.style.display = 'none'; // Hide item
+                        }
+                    });
+                    portfolioGrid.classList.remove('fade-out'); // Bring back with new items
+                    portfolioGrid.classList.add('fade-in');
+                    setTimeout(() => portfolioGrid.classList.remove('fade-in'), 300); // Remove fade-in after animation
+                }, 300); // Match this timeout to the CSS animation duration
+            }
+
+            // Add click event listeners to filter buttons
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Update active class
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+
+                    const filter = button.dataset.filter;
+                    filterPortfolio(filter);
+                });
+            });
+
+            // Handle filtering if URL hash is present (e.g., from Services page)
+            const initialFilter = window.location.hash.substring(1); // Remove '#'
+            if (initialFilter && initialFilter !== 'portfolio') { // Only apply filter if it's a category
+                const relevantButton = document.querySelector(`.filter-button[data-filter="${initialFilter}"]`);
+                if (relevantButton) {
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    relevantButton.classList.add('active');
+                    filterPortfolio(initialFilter);
+                } else {
+                    filterPortfolio('all'); // Default to all if hash is unrecognized
+                }
+            } else {
+                filterPortfolio('all'); // Show all by default on page load
+            }
+        });
+    </script>
+    <style>
+        /* CSS for the fade effect (add directly in the HTML or to style.css) */
+        /* It's okay to put short, page-specific animations here for simplicity,
+           but ideally, it could go in style.css */
+        .portfolio-grid {
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .portfolio-grid.fade-out {
+            opacity: 0;
+        }
+
+        .portfolio-grid.fade-in {
+            opacity: 1;
+        }
+    </style>
+</body>
+</html>

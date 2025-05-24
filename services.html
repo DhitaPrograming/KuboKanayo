@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KuboKanayo Creative - Services</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    </head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="site-logo">KuboKanayo Creative</a> <div class="nav-links">
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="services" class="services-section">
+        <h2>Our Services</h2>
+        <p>We craft creative that moves people — and moves culture. Click on a service to see related work!</p>
+        <div class="services-grid">
+            <a href="portfolio.html#motion-graphics" class="service-item" data-filter="motion-graphics">
+                <h3>Motion Graphics</h3>
+                <p>Dynamic visual storytelling that brings concepts to life.</p>
+            </a>
+            <a href="portfolio.html#digital-design" class="service-item" data-filter="digital-design">
+                <h3>Digital Design</h3>
+                <p>Stunning visuals crafted for the digital landscape.</p>
+            </a>
+            <a href="portfolio.html#product-content" class="service-item" data-filter="product-content">
+                <h3>Product-Focused Content</h3>
+                <p>Highlighting your products with stunning visuals.</p>
+            </a>
+            <a href="portfolio.html#immersive-visuals" class="service-item" data-filter="immersive-visuals">
+                <h3>Immersive Brand Visuals</h3>
+                <p>Creating unforgettable brand experiences.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> KuboKanayo Creative. All rights reserved.</p>
+        <p>"Designed to Disrupt - Crafted to Captivate"</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>

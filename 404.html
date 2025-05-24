@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | KuboKanayo Creative</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Specific styles for the 404 page */
+        .error-404-section {
+            padding: 100px 20px;
+            text-align: center;
+            min-height: calc(100vh - 200px); /* Adjust based on navbar/footer height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .error-404-section h1 {
+            font-size: 6em; /* Large 404 number */
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            line-height: 1;
+        }
+
+        .error-404-section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: var(--text-dark);
+        }
+
+        .error-404-section p {
+            font-size: 1.2em;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            color: var(--text-light);
+        }
+
+        /* Inherit button styles from style.css */
+        .error-404-section .button {
+            margin: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .error-404-section h1 {
+                font-size: 4em;
+            }
+            .error-404-section h2 {
+                font-size: 1.8em;
+            }
+            .error-404-section p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="site-logo">KuboKanayo Creative</a>
+            <div class="nav-links">
+                <a href="about.html">About</a>
+                <a href="services.html">Services</a>
+                <a href="portfolio.html">Portfolio</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="error-404-section">
+        <h1>404</h1>
+        <h2>Oops! Page Not Found.</h2>
+        <p>It looks like the page you're looking for doesn't exist or has been moved. Don't worry, you can always go back to our homepage or explore our services.</p>
+        <a href="index.html" class="button">Go to Homepage</a>
+        <a href="portfolio.html" class="button secondary">View Portfolio</a>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> KuboKanayo Creative. All rights reserved.</p>
+        <p>"Designed to Disrupt - Crafted to Captivate"</p>
+    </footer>
+
+    <script>
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
