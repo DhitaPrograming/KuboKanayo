@@ -3,30 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KuboKanayo Creative - About</title>
+    <title>KuboKanayo Creative - About Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body>
 
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="site-logo">KuboKanayo Creative</a> <div class="nav-links">
+            <a href="index.html" class="site-logo">
+                <img src="images/logo-header.png" alt="KuboKanayo Creative Logo">
+            </a>
+            <div class="nav-links">
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="contact.html">Contact</a>
             </div>
+            <button id="theme-toggle" aria-label="Toggle day/night mode">
+                <span class="icon-sun">☀️</span> <span class="icon-moon">🌙</span> </button>
+            <button class="sidebar-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
         </div>
     </nav>
 
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar-menu">
+        <button class="sidebar-close" aria-label="Close navigation menu">&times;</button>
+        <div class="sidebar-content">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact</a>
+            </div>
+    </aside>
+
     <section id="about" class="about-section">
         <h2>About KuboKanayo Creative</h2>
-        <p>KuboKanayo Creative is a B2C-focused creative agency that builds standout brand campaigns powered by bold 2D and 3D visual storytelling.</p>
-        <p>We specialize in awareness-driven strategies that help consumer brands rise above the noise and become unforgettable. From motion graphics and digital design to product-focused content and immersive brand visuals, we craft creative that moves people — and moves culture. Whether you’re launching a product or looking to reconnect with your audience, we turn your message into campaigns that resonate, engage, and drive lasting attention.</p>
-    
+        <p>KuboKanayo Creative is a B2C-focused creative agency that builds standout brand campaigns powered by bold 2D and 3D visual storytelling. We specialize in awareness-driven strategies that help consumer brands rise above the noise and become unforgettable. From motion graphics and digital design to product-focused content and immersive brand visuals, we craft creative that moves people — and moves culture. Whether you’re launching a product or looking to reconnect with your audience, we turn your message into campaigns that resonate, engage, and drive lasting attention.</p>
+
         <h3>Our Philosophy: Kubo & Kanayo</h3>
         <p><strong>Kubo</strong> is inspired by the warmth of a humble space, a place to think, dream, and build. In Indonesian and Filipino culture, kubo refers to a small hut or shelter, simple, grounded, yet full of life and stories.</p>
         <p><strong>Kanayo</strong> is a name we gave meaning to, a symbol of belief, ambition, and identity. It represents the dreamer who dares, the creator who disrupts, and the soul who leads with culture.</p>
@@ -40,6 +61,80 @@
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- NEW: Day/Night Mode Toggle Functionality ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<span class="icon-moon">🌙</span>'; // Show moon when dark
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                themeToggle.innerHTML = '<span class="icon-sun">☀️</span>'; // Show sun when light
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference or system preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (prefersDarkScheme.matches) {
+            setTheme('dark'); // Default to dark if system prefers it
+        } else {
+            setTheme('light'); // Default to light otherwise
+        }
+
+        // Listen for theme toggle button click
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Listen for system theme changes (optional)
+        prefersDarkScheme.addEventListener('change', (event) => {
+            if (!localStorage.getItem('theme')) { // Only react if user hasn't manually set a theme
+                setTheme(event.matches ? 'dark' : 'light');
+            }
+        });
+
+        // --- End Day/Night Mode Toggle Functionality ---
+
+
+        // Universal Sidebar functionality
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebarClose = document.querySelector('.sidebar-close');
+        const sidebarMenu = document.querySelector('.sidebar-menu');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a'); // All links in sidebar
+
+        function toggleSidebar() {
+            sidebarMenu.classList.toggle('is-open');
+            sidebarOverlay.classList.toggle('is-active');
+            document.body.classList.toggle('no-scroll'); // Prevent scrolling when sidebar is open
+            sidebarToggle.classList.toggle('is-open'); // Animate hamburger icon
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarClose.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar); // Close when clicking outside
+
+        // Close sidebar when a link is clicked (for all sidebar links)
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (sidebarMenu.classList.contains('is-open')) {
+                    toggleSidebar();
+                }
+            });
+        });
     </script>
 </body>
 </html>

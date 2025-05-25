@@ -6,14 +6,14 @@
     <title>404 - Page Not Found | KuboKanayo Creative</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
         /* Specific styles for the 404 page */
         .error-404-section {
-            padding: 100px 20px;
+            padding: var(--spacing-xxl) var(--spacing-md);
             text-align: center;
-            min-height: calc(100vh - 200px); /* Adjust based on navbar/footer height */
+            min-height: calc(100vh - 160px); /* Adjust based on navbar/footer height */
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -21,39 +21,40 @@
         }
 
         .error-404-section h1 {
-            font-size: 6em; /* Large 404 number */
-            color: var(--primary-color);
-            margin-bottom: 20px;
+            font-size: 8rem; /* Large 404 number */
+            color: var(--accent-bold);
+            margin-bottom: var(--spacing-sm);
             line-height: 1;
+            font-weight: 900;
         }
 
         .error-404-section h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
-            color: var(--text-dark);
+            font-size: var(--h2-font-size);
+            margin-bottom: var(--spacing-md);
+            color: var(--primary-brand-dark);
         }
 
         .error-404-section p {
-            font-size: 1.2em;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            color: var(--text-light);
+            font-size: var(--p-font-size);
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg) auto;
+            color: var(--text-body);
         }
 
         /* Inherit button styles from style.css */
         .error-404-section .button {
-            margin: 10px;
+            margin: var(--spacing-xs);
         }
 
         @media (max-width: 768px) {
             .error-404-section h1 {
-                font-size: 4em;
+                font-size: 5rem;
             }
             .error-404-section h2 {
-                font-size: 1.8em;
+                font-size: 2rem;
             }
             .error-404-section p {
-                font-size: 1em;
+                font-size: var(--p-font-size);
             }
         }
     </style>
@@ -69,8 +70,25 @@
                 <a href="portfolio.html">Portfolio</a>
                 <a href="contact.html">Contact</a>
             </div>
+            <button class="sidebar-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
         </div>
     </nav>
+
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar-menu">
+        <button class="sidebar-close" aria-label="Close navigation menu">&times;</button>
+        <div class="sidebar-content">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact</a>
+            </div>
+    </aside>
 
     <section class="error-404-section">
         <h1>404</h1>
@@ -87,6 +105,33 @@
 
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // Universal Sidebar functionality
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebarClose = document.querySelector('.sidebar-close');
+        const sidebarMenu = document.querySelector('.sidebar-menu');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a'); // All links in sidebar
+
+        function toggleSidebar() {
+            sidebarMenu.classList.toggle('is-open');
+            sidebarOverlay.classList.toggle('is-active');
+            document.body.classList.toggle('no-scroll'); // Prevent scrolling when sidebar is open
+            sidebarToggle.classList.toggle('is-open'); // Animate hamburger icon
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarClose.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar); // Close when clicking outside
+
+        // Close sidebar when a link is clicked (for all sidebar links)
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (sidebarMenu.classList.contains('is-open')) {
+                    toggleSidebar();
+                }
+            });
+        });
     </script>
 </body>
 </html>

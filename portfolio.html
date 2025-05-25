@@ -3,35 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KuboKanayo Creative - Portfolio</title>
+    <title>KuboKanayo Creative - Our Portfolio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body>
 
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="site-logo">KuboKanayo Creative</a> <div class="nav-links">
+            <a href="index.html" class="site-logo">
+                <img src="images/logo-header.png" alt="KuboKanayo Creative Logo">
+            </a>
+            <div class="nav-links">
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="contact.html">Contact</a>
             </div>
+            <button id="theme-toggle" aria-label="Toggle day/night mode">
+                <span class="icon-sun">☀️</span> <span class="icon-moon">🌙</span> </button>
+            <button class="sidebar-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
         </div>
     </nav>
+
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar-menu">
+        <button class="sidebar-close" aria-label="Close navigation menu">&times;</button>
+        <div class="sidebar-content">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact</a>
+            <hr> <a href="#all" class="sidebar-category-link" data-filter="all">All Projects</a>
+            <a href="#motion-graphics" class="sidebar-category-link" data-filter="motion-graphics">Motion Graphics</a>
+            <a href="#digital-design" class="sidebar-category-link" data-filter="digital-design">Digital Design</a>
+            <a href="#product-content" class="sidebar-category-link" data-filter="product-content">Product-Focused Content</a>
+            <a href="#immersive-visuals" class="sidebar-category-link" data-filter="immersive-visuals">Immersive Brand Visuals</a>
+        </div>
+    </aside>
 
     <section id="portfolio" class="portfolio-section">
         <h2>Our Work</h2>
         <p>Explore our diverse portfolio of bold visual storytelling, categorized by service.</p>
+
         <div class="filter-buttons">
-            <button class="button filter-button active" data-filter="all">All Projects</button>
-            <button class="button filter-button" data-filter="motion-graphics">Motion Graphics</button>
-            <button class="button filter-button" data-filter="digital-design">Digital Design</button>
-            <button class="button filter-button" data-filter="product-content">Product-Focused Content</button>
-            <button class="button filter-button" data-filter="immersive-visuals">Immersive Brand Visuals</button>
+            <div class="filter-row-top">
+                <button class="button filter-button active" data-filter="all">All Projects</button>
+            </div>
+            <div class="filter-row-bottom">
+                <button class="button filter-button" data-filter="motion-graphics">Motion Graphics</button>
+                <button class="button filter-button" data-filter="digital-design">Digital Design</button>
+                <button class="button filter-button" data-filter="product-content">Product-Focused Content</button>
+                <button class="button filter-button" data-filter="immersive-visuals">Immersive Brand Visuals</button>
+            </div>
         </div>
+
         <div class="portfolio-grid">
             <div class="portfolio-item" data-category="motion-graphics">
                 <img src="images/portfolio-item-1.jpg" alt="Motion Graphics Project: Urban Flow">
@@ -41,7 +74,7 @@
             <div class="portfolio-item" data-category="digital-design">
                 <img src="images/portfolio-item-2.jpg" alt="Digital Design Project: App UI Concept">
                 <h3>Zenith App UI/UX</h3>
-                <p>User interface and experience design for a minimalist meditation app, emphasizing intuitive navigation and calming aesthetics.</p>
+                <p>User interface and experience experience design for a minimalist meditation app, emphasizing intuitive navigation and calming aesthetics.</p>
                 <a href="#" class="item-link">View Project</a>
             </div>
             <div class="portfolio-item" data-category="product-content">
@@ -50,7 +83,8 @@
                 <p>3D product visualization and content creation for a new line of high-fidelity headphones, showcasing product features and lifestyle integration.</p>
                 <a href="#" class="item-link">View Project</a>
             </div>
-            <div class="portfolio-item" data-category="immersive-visuals digital-design"> <img src="images/portfolio-item-4.jpg" alt="Immersive Visuals Project: Aurora Experiance">
+            <div class="portfolio-item" data-category="immersive-visuals digital-design">
+                <img src="images/portfolio-item-4.jpg" alt="Immersive Visuals Project: Aurora Experiance">
                 <h3>Aurora Brand Experience</h3>
                 <p>Development of interactive immersive visuals for a pop-up art installation, designed to evoke wonder and brand engagement.</p>
                 <a href="#" class="item-link">View Project</a>
@@ -64,38 +98,130 @@
     </footer>
 
     <script>
+        // JavaScript to dynamically set the current year in the footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- NEW: Day/Night Mode Toggle Functionality ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<span class="icon-moon">🌙</span>'; // Show moon when dark
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                themeToggle.innerHTML = '<span class="icon-sun">☀️</span>'; // Show sun when light
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference or system preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (prefersDarkScheme.matches) {
+            setTheme('dark'); // Default to dark if system prefers it
+        } else {
+            setTheme('light'); // Default to light otherwise
+        }
+
+        // Listen for theme toggle button click
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Listen for system theme changes (optional)
+        prefersDarkScheme.addEventListener('change', (event) => {
+            if (!localStorage.getItem('theme')) { // Only react if user hasn't manually set a theme
+                setTheme(event.matches ? 'dark' : 'light');
+            }
+        });
+
+        // --- End Day/Night Mode Toggle Functionality ---
+
+
+        // Universal Sidebar functionality
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebarClose = document.querySelector('.sidebar-close');
+        const sidebarMenu = document.querySelector('.sidebar-menu');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a'); // All links in sidebar
+
+        function toggleSidebar() {
+            sidebarMenu.classList.toggle('is-open');
+            sidebarOverlay.classList.toggle('is-active');
+            document.body.classList.toggle('no-scroll'); // Prevent scrolling when sidebar is open
+            sidebarToggle.classList.toggle('is-open'); // Animate hamburger icon
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarClose.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar); // Close when clicking outside
+
+        // Close sidebar when a link is clicked (for all sidebar links)
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (sidebarMenu.classList.contains('is-open')) {
+                    toggleSidebar();
+                }
+            });
+        });
 
         // Portfolio Filtering Logic
         document.addEventListener('DOMContentLoaded', () => {
             const filterButtons = document.querySelectorAll('.filter-button');
             const portfolioItems = document.querySelectorAll('.portfolio-item');
-            const portfolioGrid = document.querySelector('.portfolio-grid'); // Get the grid container
+            const portfolioGrid = document.querySelector('.portfolio-grid');
 
             function filterPortfolio(category) {
-                // Remove existing items with animation
-                portfolioGrid.classList.add('fade-out');
+                portfolioGrid.classList.add('fade-out'); // Start fade-out on the grid
 
                 setTimeout(() => {
+                    let delay = 0; // Initialize delay for staggered animation
+
                     portfolioItems.forEach(item => {
                         const itemCategories = item.dataset.category ? item.dataset.category.split(' ') : [];
 
                         if (category === 'all' || itemCategories.includes(category)) {
-                            item.style.display = 'block'; // Show item
+                            // Apply display: block immediately, then add is-visible with stagger
+                            item.style.display = 'block';
+                            item.classList.remove('is-visible'); // Ensure it's hidden before re-animating
+
+                            if (category === 'all') {
+                                setTimeout(() => {
+                                    item.classList.add('is-visible');
+                                }, delay);
+                                delay += 70; // Increase delay for the next item (70ms)
+                            } else {
+                                // For specific categories, just show them without stagger
+                                item.classList.add('is-visible');
+                            }
+
                         } else {
-                            item.style.display = 'none'; // Hide item
+                            item.style.display = 'none'; // Hide non-matching items
+                            item.classList.remove('is-visible'); // Ensure hidden items don't have is-visible
                         }
                     });
-                    portfolioGrid.classList.remove('fade-out'); // Bring back with new items
+
+                    // After all items are processed, remove fade-out from grid and add fade-in
+                    portfolioGrid.classList.remove('fade-out');
                     portfolioGrid.classList.add('fade-in');
                     setTimeout(() => portfolioGrid.classList.remove('fade-in'), 300); // Remove fade-in after animation
-                }, 300); // Match this timeout to the CSS animation duration
+
+                }, 300); // Match this timeout to the CSS animation duration for fade-out
             }
 
-            // Add click event listeners to filter buttons
+            // Add click event listeners to filter buttons (on-page buttons)
             filterButtons.forEach(button => {
                 button.addEventListener('click', () => {
-                    // Update active class
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     button.classList.add('active');
 
@@ -104,19 +230,41 @@
                 });
             });
 
+            // Add click event listeners to sidebar category links
+            const sidebarCategoryLinks = document.querySelectorAll('.sidebar-category-link');
+            sidebarCategoryLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    // Prevent default anchor behavior if it's a filter link
+                    if (e.currentTarget.dataset.filter) {
+                        e.preventDefault();
+                        const filter = e.currentTarget.dataset.filter;
+                        filterPortfolio(filter);
+                        // Also activate the corresponding on-page filter button
+                        filterButtons.forEach(btn => btn.classList.remove('active'));
+                        const correspondingButton = document.querySelector(`.filter-button[data-filter="${filter}"]`);
+                        if (correspondingButton) {
+                            correspondingButton.classList.add('active');
+                        }
+                        // Scroll to portfolio section if not already there
+                        document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });
+                    }
+                });
+            });
+
+
             // Handle filtering if URL hash is present (e.g., from Services page)
-            const initialFilter = window.location.hash.substring(1); // Remove '#'
-            if (initialFilter && initialFilter !== 'portfolio') { // Only apply filter if it's a category
+            const initialFilter = window.location.hash.substring(1);
+            if (initialFilter && initialFilter !== 'portfolio') {
                 const relevantButton = document.querySelector(`.filter-button[data-filter="${initialFilter}"]`);
                 if (relevantButton) {
                     filterButtons.forEach(btn => btn.classList.remove('active'));
                     relevantButton.classList.add('active');
                     filterPortfolio(initialFilter);
                 } else {
-                    filterPortfolio('all'); // Default to all if hash is unrecognized
+                    filterPortfolio('all');
                 }
             } else {
-                filterPortfolio('all'); // Show all by default on page load
+                filterPortfolio('all');
             }
         });
     </script>

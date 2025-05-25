@@ -3,97 +3,117 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KuboKanayo Creative</title>
+    <title>KuboKanayo Creative - Designed to Disrupt - Crafted to Captivate</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+<body>
 
- <body>
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="site-logo">KuboKanayo Creative</a>
+            <a href="index.html" class="site-logo">
+                <img src="images/logo-header.png" alt="KuboKanayo Creative Logo">
+            </a>
             <div class="nav-links">
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="contact.html">Contact</a>
             </div>
+            <button id="theme-toggle" aria-label="Toggle day/night mode">
+                <span class="icon-sun">☀️</span> <span class="icon-moon">🌙</span> </button>
+            <button class="sidebar-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
         </div>
     </nav>
-    <header class="hero-section">
-        </header>
 
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar-menu">
+        <button class="sidebar-close" aria-label="Close navigation menu">&times;</button>
+        <div class="sidebar-content">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact</a>
+            </div>
+    </aside>
+
+    <header class="hero-section">
+        <h1>KuboKanayo Creative</h1>
+        <p class="tagline">Bold visual powered by 2D & 3D creativity. We help B2C brands stand out, connect, and stay unforgettable.</p>
+        <p class="slogan">"Designed to Disrupt - Crafted to Captivate"</p>
+        <a href="portfolio.html" class="button">View Our Work</a>
+        <a href="contact.html" class="button secondary">Get In Touch</a>
     </header>
 
-    <section id="homepage-about" class="homepage-section about-snippet">
-        <h2>Who are We?</h2>
+    <section id="homepage-about" class="homepage-section about-snippet fade-in-section">
         <p class="intro-text">
             KuboKanayo Creative is a B2C-focused creative agency that builds standout brand campaigns powered by bold 2D and 3D visual storytelling. We specialize in awareness-driven strategies that help consumer brands rise above the noise and become unforgettable.
         </p>
-        <a href="about.html" class="button">Learn More About Us</a>
+        <a href="about.html" class="button secondary">Learn More About Us</a>
     </section>
 
-    <section id="homepage-services" class="homepage-section services-overview">
+    <section id="homepage-services" class="homepage-section services-overview fade-in-section">
         <h2>Our Core Creative Services</h2>
         <p>From captivating motion graphics and digital design to product-focused content and immersive brand visuals, we craft creative that moves people — and moves culture.</p>
         <div class="services-mini-grid">
             <div class="service-summary-item">
                 <h3>Motion Graphics</h3>
-                <p>Dynamic storytelling that brings concepts to life.</p>
+                <p>Dynamic storytelling that brings concepts to life for ultimate impact.</p>
             </div>
             <div class="service-summary-item">
                 <h3>Digital Design</h3>
-                <p>Visually compelling assets for all digital platforms.</p>
+                <p>Visually compelling assets crafted for the modern digital landscape.</p>
             </div>
             <div class="service-summary-item">
                 <h3>Product Content</h3>
-                <p>Highlighting your products with stunning visuals.</p>
+                <p>Highlighting your products' unique features with stunning visuals and narratives.</p>
             </div>
             <div class="service-summary-item">
                 <h3>Immersive Visuals</h3>
-                <p>Creating unforgettable brand experiences.</p>
+                <p>Creating unforgettable brand experiences through bold and disruptive visual storytelling.</p>
             </div>
         </div>
-        <a href="services.html" class="button secondary">See All Services</a>
+        <a href="services.html" class="button">See All Services</a>
     </section>
 
-    <section id="homepage-portfolio" class="homepage-section featured-portfolio">
+    <section id="homepage-portfolio" class="homepage-section featured-portfolio fade-in-section">
         <h2>Featured Work</h2>
-        <p>A glimpse into our disruptive designs and captivating creations.</p>
+        <p>A glimpse into our disruptive designs and captivating creations that move culture.</p>
         <div class="portfolio-grid">
-            <div class="portfolio-item">
-                <img src="images/portfolio-item-1.jpg" alt="Featured Project 1">
-                <h3>[Project Title 1]</h3>
-                <p>[Brief description or client name]</p>
-                <a href="portfolio.html" class="item-link">View Project</a>
+            <div class="portfolio-item fade-in-item"> <img src="images/portfolio-item-1.jpg" alt="Featured Project 1: Dynamic Motion Graphics">
+                <h3>Dynamic Brand Intro</h3>
+                <p>Motion Graphics for a tech startup's product launch.</p>
+                <a href="portfolio.html#motion-graphics" class="item-link">View Project</a>
             </div>
-            <div class="portfolio-item">
-                <img src="images/portfolio-item-2.jpg" alt="Featured Project 2">
-                <h3>[Project Title 2]</h3>
-                <p>[Brief description or client name]</p>
-                <a href="portfolio.html" class="item-link">View Project</a>
+            <div class="portfolio-item fade-in-item"> <img src="images/portfolio-item-2.jpg" alt="Featured Project 2: Clean UI/UX Design">
+                <h3>Intuitive App Interface</h3>
+                <p>Digital Design for a user-friendly e-commerce application.</p>
+                <a href="portfolio.html#digital-design" class="item-link">View Project</a>
             </div>
-            <div class="portfolio-item">
-                <img src="images/portfolio-item-3.jpg" alt="Featured Project 3">
-                <h3>[Project Title 3]</h3>
-                <p>[Brief description or client name]</p>
-                <a href="portfolio.html" class="item-link">View Project</a>
+            <div class="portfolio-item fade-in-item"> <img src="images/portfolio-item-3.jpg" alt="Featured Project 3: 3D Product Visualization">
+                <h3>Product Highlight Reel</h3>
+                <p>Product-Focused Content for a new line of smart devices.</p>
+                <a href="portfolio.html#product-content" class="item-link">View Project</a>
             </div>
-             <div class="portfolio-item">
-                <img src="images/portfolio-item-4.jpg" alt="Featured Project 4">
-                <h3>[Project Title 4]</h3>
-                <p>[Brief description or client name]</p>
-                <a href="portfolio.html" class="item-link">View Project</a>
+             <div class="portfolio-item fade-in-item"> <img src="images/portfolio-item-4.jpg" alt="Featured Project 4: Immersive Brand Campaign">
+                <h3>Experiential Brand Visuals</h3>
+                <p>Immersive Visuals for a global fashion brand campaign.</p>
+                <a href="portfolio.html#immersive-visuals" class="item-link">View Project</a>
             </div>
         </div>
-        <a href="portfolio.html" class="button">View All Our Work</a>
+        <a href="portfolio.html" class="button secondary">View All Our Work</a>
     </section>
 
-    <section id="homepage-cta" class="homepage-section cta-section">
+    <section id="homepage-cta" class="homepage-section cta-section fade-in-section">
         <h2>Ready to Create Something Unforgettable?</h2>
-        <p>Let's turn your message into campaigns that resonate, engage, and drive lasting attention.</p>
+        <p>Let's turn your message into campaigns that resonate, engage, and drive lasting attention. We're ready to disrupt and captivate.</p>
         <a href="contact.html" class="button">Get a Quote / Collaborate</a>
     </section>
 
@@ -101,7 +121,142 @@
         <p>&copy; <span id="current-year"></span> KuboKanayo Creative. All rights reserved.</p>
         <p>"Designed to Disrupt - Crafted to Captivate"</p>
     </footer>
+
     <script>
+        // JavaScript to dynamically set the current year in the footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // --- NEW: Day/Night Mode Toggle Functionality ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<span class="icon-moon">🌙</span>'; // Show moon when dark
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                themeToggle.innerHTML = '<span class="icon-sun">☀️</span>'; // Show sun when light
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference or system preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (prefersDarkScheme.matches) {
+            setTheme('dark'); // Default to dark if system prefers it
+        } else {
+            setTheme('light'); // Default to light otherwise
+        }
+
+        // Listen for theme toggle button click
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Listen for system theme changes (optional)
+        prefersDarkScheme.addEventListener('change', (event) => {
+            if (!localStorage.getItem('theme')) { // Only react if user hasn't manually set a theme
+                setTheme(event.matches ? 'dark' : 'light');
+            }
+        });
+
+        // --- End Day/Night Mode Toggle Functionality ---
+
+
+        // Universal Sidebar functionality (existing code below this)
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebarClose = document.querySelector('.sidebar-close');
+        const sidebarMenu = document.querySelector('.sidebar-menu');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a'); // All links in sidebar
+
+        function toggleSidebar() {
+            sidebarMenu.classList.toggle('is-open');
+            sidebarOverlay.classList.toggle('is-active');
+            document.body.classList.toggle('no-scroll'); // Prevent scrolling when sidebar is open
+            sidebarToggle.classList.toggle('is-open'); // Animate hamburger icon
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarClose.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar); // Close when clicking outside
+
+        // Close sidebar when a link is clicked (for all sidebar links)
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (sidebarMenu.classList.contains('is-open')) {
+                    toggleSidebar();
+                }
+            });
+        });
+
+        // Smooth Scroll Animation for SECTIONS (fade-in-section)
+        const faders = document.querySelectorAll('.fade-in-section');
+
+        const appearOptions = {
+            threshold: 0.2, // When 20% of the element is visible
+            rootMargin: "0px 0px -50px 0px" // Start observing 50px before it enters viewport
+        };
+
+        const appearOnScroll = new IntersectionObserver(function(
+            entries,
+            appearOnScroll
+        ) {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) {
+                    return;
+                } else {
+                    entry.target.classList.add('is-visible');
+                    appearOnScroll.unobserve(entry.target);
+                }
+            });
+        }, appearOptions);
+
+        faders.forEach(fader => {
+            appearOnScroll.observe(fader);
+        });
+
+        // Staggered Animation for FEATURED PORTFOLIO ITEMS (fade-in-item) - Only on index.html
+        if (document.getElementById('homepage-portfolio')) { // Check if this section exists (i.e., on index.html)
+            const portfolioItems = document.querySelectorAll('#homepage-portfolio .portfolio-item.fade-in-item');
+
+            const itemAppearOptions = {
+                threshold: 0.2,
+                rootMargin: "0px 0px -100px 0px"
+            };
+
+            const itemAppearOnScroll = new IntersectionObserver(function(
+                entries,
+                itemAppearOnScroll
+            ) {
+                let delay = 0;
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        if (!entry.target.classList.contains('is-visible')) {
+                            setTimeout(() => {
+                                entry.target.classList.add('is-visible');
+                            }, delay);
+                            delay += 100;
+                        }
+                        itemAppearOnScroll.unobserve(entry.target);
+                    }
+                });
+            }, itemAppearOptions);
+
+            portfolioItems.forEach(item => {
+                itemAppearOnScroll.observe(item);
+            });
+        }
     </script>
 </body>
+</html>

@@ -3,32 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KuboKanayo Creative - Contact</title>
+    <title>KuboKanayo Creative - Contact Us</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    </head>
+</head>
 <body>
 
     <nav class="navbar">
         <div class="container">
-            <a href="index.html" class="site-logo">KuboKanayo Creative</a> <div class="nav-links">
+            <a href="index.html" class="site-logo">
+                <img src="images/logo-header.png" alt="KuboKanayo Creative Logo">
+            </a>
+            <div class="nav-links">
                 <a href="about.html">About</a>
                 <a href="services.html">Services</a>
                 <a href="portfolio.html">Portfolio</a>
                 <a href="contact.html">Contact</a>
             </div>
+            <button id="theme-toggle" aria-label="Toggle day/night mode">
+                <span class="icon-sun">☀️</span> <span class="icon-moon">🌙</span> </button>
+            <button class="sidebar-toggle" aria-label="Toggle navigation menu">
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+                <span class="hamburger-icon"></span>
+            </button>
         </div>
     </nav>
+
+    <div class="sidebar-overlay"></div>
+
+    <aside class="sidebar-menu">
+        <button class="sidebar-close" aria-label="Close navigation menu">&times;</button>
+        <div class="sidebar-content">
+            <a href="about.html">About</a>
+            <a href="services.html">Services</a>
+            <a href="portfolio.html">Portfolio</a>
+            <a href="contact.html">Contact</a>
+            </div>
+    </aside>
 
     <section id="contact" class="contact-section">
         <div class="contact-header">
             <h2>Have a project?</h2>
             <p>Get in touch today</p>
         </div>
-    
-        <form action="https://formspree.io/f/mldbkqak" method="POST" enctype="multipart/form-data" class="contact-form">
+
+        <form action="https://formspree.io/f/YOUR_FORMSPREE_CODE" method="POST" enctype="multipart/form-data" class="contact-form">
             <div class="form-grid">
                 <div class="form-left">
                     <div class="form-group">
@@ -43,16 +65,6 @@
                         <label for="phone" class="sr-only">Phone</label>
                         <input type="tel" id="phone" name="phone" placeholder="Phone">
                     </div>
-                    <div class="form-group">
-                        <label for="subject" class="sr-only">Subject</label>
-                        <input type="text" id="subject" name="subject" placeholder="Subject">
-                    </div>
-                    <div class="form-group file-upload-group">
-                        <label for="file" class="file-label">File</label>
-                        <input type="file" id="file" name="upload_file" class="file-input">
-                        <span class="file-chosen">No file chosen</span>
-                        <p class="file-info">Max. file size: 128 MB.</p>
-                    </div>
                 </div>
                 <div class="form-right">
                     <div class="form-group message-group">
@@ -63,13 +75,13 @@
             </div>
             <button type="submit" class="button submit-button">Send Message</button>
         </form>
-    
+
         <div class="contact-social-links">
-            <h3>Connect with us directly:</h3>
-            <a href="mailto:kubokanoyo@gmail.com">Email Us</a>
+            <h3>Or connect with us directly:</h3>
+            <a href="mailto:kubokanayocreative@gmail.com">E-mail</a>
             <a href="https://linkedin.com/company/kubokanayo-creative" target="_blank">LinkedIn</a>
-            <a href="https://behance.net/yourprofile" target="_blank">Behance</a>
-            </div>
+            <a href="https://www.instagram.com/kubokanayo" target="_blank">Instagram</a>
+        </div>
     </section>
 
     <footer>
@@ -80,19 +92,79 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // JavaScript for file input name display
-        const fileInput = document.getElementById('file');
-        const fileChosenSpan = document.querySelector('.file-chosen');
+        // --- NEW: Day/Night Mode Toggle Functionality ---
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-        if (fileInput && fileChosenSpan) {
-            fileInput.addEventListener('change', function() {
-                if (this.files && this.files.length > 0) {
-                    fileChosenSpan.textContent = this.files[0].name;
-                } else {
-                    fileChosenSpan.textContent = 'No file chosen';
+        // Function to set the theme
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.classList.add('dark-mode');
+                themeToggle.innerHTML = '<span class="icon-moon">🌙</span>'; // Show moon when dark
+                localStorage.setItem('theme', 'dark');
+            } else {
+                body.classList.remove('dark-mode');
+                themeToggle.innerHTML = '<span class="icon-sun">☀️</span>'; // Show sun when light
+                localStorage.setItem('theme', 'light');
+            }
+        }
+
+        // Check for saved theme preference or system preference on load
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            setTheme(savedTheme);
+        } else if (prefersDarkScheme.matches) {
+            setTheme('dark'); // Default to dark if system prefers it
+        } else {
+            setTheme('light'); // Default to light otherwise
+        }
+
+        // Listen for theme toggle button click
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('dark-mode')) {
+                setTheme('light');
+            } else {
+                setTheme('dark');
+            }
+        });
+
+        // Listen for system theme changes (optional)
+        prefersDarkScheme.addEventListener('change', (event) => {
+            if (!localStorage.getItem('theme')) { // Only react if user hasn't manually set a theme
+                setTheme(event.matches ? 'dark' : 'light');
+            }
+        });
+
+        // --- End Day/Night Mode Toggle Functionality ---
+
+
+        // Universal Sidebar functionality
+        const sidebarToggle = document.querySelector('.sidebar-toggle');
+        const sidebarClose = document.querySelector('.sidebar-close');
+        const sidebarMenu = document.querySelector('.sidebar-menu');
+        const sidebarOverlay = document.querySelector('.sidebar-overlay');
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a'); // All links in sidebar
+
+        function toggleSidebar() {
+            sidebarMenu.classList.toggle('is-open');
+            sidebarOverlay.classList.toggle('is-active');
+            document.body.classList.toggle('no-scroll'); // Prevent scrolling when sidebar is open
+            sidebarToggle.classList.toggle('is-open'); // Animate hamburger icon
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        sidebarClose.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', toggleSidebar); // Close when clicking outside
+
+        // Close sidebar when a link is clicked (for all sidebar links)
+        sidebarLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (sidebarMenu.classList.contains('is-open')) {
+                    toggleSidebar();
                 }
             });
-        }
+        });
     </script>
 </body>
 </html>
