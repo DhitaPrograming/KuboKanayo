@@ -44,15 +44,41 @@
             </div>
     </aside>
 
-    <section id="about" class="about-section">
-        <h2>About KuboKanayo Creative</h2>
-        <p>KuboKanayo Creative is a B2C-focused creative agency that builds standout brand campaigns powered by bold 2D and 3D visual storytelling. We specialize in awareness-driven strategies that help consumer brands rise above the noise and become unforgettable. From motion graphics and digital design to product-focused content and immersive brand visuals, we craft creative that moves people — and moves culture. Whether you’re launching a product or looking to reconnect with your audience, we turn your message into campaigns that resonate, engage, and drive lasting attention.</p>
+    <main id="main-content">
+        <section id="about" class="about-section">
+            <h2>About KuboKanayo Creative</h2>
+            <p>KuboKanayo Creative is a B2C-focused creative agency that builds standout brand campaigns powered by bold 2D and 3D visual storytelling. We specialize in awareness-driven strategies that help consumer brands rise above the noise and become unforgettable. From motion graphics and digital design to product-focused content and immersive brand visuals, we craft creative that moves people — and moves culture. Whether you’re launching a product or looking to reconnect with your audience, we turn your message into campaigns that resonate, engage, and drive lasting attention.</p>
+        </section>
 
-        <h3>Our Philosophy: Kubo & Kanayo</h3>
-        <p><strong>Kubo</strong> is inspired by the warmth of a humble space, a place to think, dream, and build. In Indonesian and Filipino culture, kubo refers to a small hut or shelter, simple, grounded, yet full of life and stories.</p>
-        <p><strong>Kanayo</strong> is a name we gave meaning to, a symbol of belief, ambition, and identity. It represents the dreamer who dares, the creator who disrupts, and the soul who leads with culture.</p>
-        <p>Together, "KuboKanayo" is more than a name — it’s a mindset. A fusion of space and spirit, intention and impact. This is where stories start. Where culture speaks. Where attention becomes emotion.</p>
-    </section>
+        <section id="brand-values" class="about-section about-values">
+            <h2>Our Brand Values</h2>
+            <div class="values-grid">
+                <div class="value-item">
+                    <h3>Disruption</h3>
+                    <p>We don’t play it safe. We break patterns, stop the scroll, and turn heads with ideas that challenge the expected and demand attention.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Intention</h3>
+                    <p>Nothing is random. Every visual, every word, every movement is thoughtfully crafted to serve a purpose — whether it’s to spark a reaction, start a conversation, or drive results.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Culture</h3>
+                    <p>We are rooted in the now. From street style to subcultures, we design through the lens of what matters to today’s generation.</p>
+                </div>
+                <div class="value-item">
+                    <h3>Emotion</h3>
+                    <p>We create stories that feel — not just look. Because real connection happens when your audience doesn’t just see your brand, they feel it.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about-section philosophy-section">
+            <h3>Our Philosophy: Kubo & Kanayo</h3>
+            <p><strong>Kubo</strong> is inspired by the warmth of a humble space, a place to think, dream, and build. In Indonesian and Filipino culture, kubo refers to a small hut or shelter, simple, grounded, yet full of life and stories.</p>
+            <p><strong>Kanayo</strong> is a name we gave meaning to, a symbol of belief, ambition, and identity. It represents the dreamer who dares, the creator who disrupts, and the soul who leads with culture.</p>
+            <p>Together, "KuboKanayo" is more than a name — it’s a mindset. A fusion of space and spirit, intention and impact. This is where stories start. Where culture speaks. Where attention becomes emotion.</p>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; <span id="current-year"></span> KuboKanayo Creative. All rights reserved.</p>
@@ -62,35 +88,32 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // --- NEW: Day/Night Mode Toggle Functionality ---
+        // --- Day/Night Mode Toggle Functionality ---
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-        // Function to set the theme
         function setTheme(theme) {
             if (theme === 'dark') {
                 body.classList.add('dark-mode');
-                themeToggle.innerHTML = '<span class="icon-moon">🌙</span>'; // Show moon when dark
+                themeToggle.innerHTML = '<span class="icon-moon">🌙</span>'; 
                 localStorage.setItem('theme', 'dark');
             } else {
                 body.classList.remove('dark-mode');
-                themeToggle.innerHTML = '<span class="icon-sun">☀️</span>'; // Show sun when light
+                themeToggle.innerHTML = '<span class="icon-sun">☀️</span>'; 
                 localStorage.setItem('theme', 'light');
             }
         }
 
-        // Check for saved theme preference or system preference on load
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             setTheme(savedTheme);
         } else if (prefersDarkScheme.matches) {
-            setTheme('dark'); // Default to dark if system prefers it
+            setTheme('dark'); 
         } else {
-            setTheme('light'); // Default to light otherwise
+            setTheme('light'); 
         }
 
-        // Listen for theme toggle button click
         themeToggle.addEventListener('click', () => {
             if (body.classList.contains('dark-mode')) {
                 setTheme('light');
@@ -99,13 +122,11 @@
             }
         });
 
-        // Listen for system theme changes (optional)
         prefersDarkScheme.addEventListener('change', (event) => {
-            if (!localStorage.getItem('theme')) { // Only react if user hasn't manually set a theme
+            if (!localStorage.getItem('theme')) { 
                 setTheme(event.matches ? 'dark' : 'light');
             }
         });
-
         // --- End Day/Night Mode Toggle Functionality ---
 
 
@@ -114,20 +135,19 @@
         const sidebarClose = document.querySelector('.sidebar-close');
         const sidebarMenu = document.querySelector('.sidebar-menu');
         const sidebarOverlay = document.querySelector('.sidebar-overlay');
-        const sidebarLinks = document.querySelectorAll('.sidebar-menu a'); // All links in sidebar
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a'); 
 
         function toggleSidebar() {
             sidebarMenu.classList.toggle('is-open');
             sidebarOverlay.classList.toggle('is-active');
-            document.body.classList.toggle('no-scroll'); // Prevent scrolling when sidebar is open
-            sidebarToggle.classList.toggle('is-open'); // Animate hamburger icon
+            document.body.classList.toggle('no-scroll'); 
+            sidebarToggle.classList.toggle('is-open'); 
         }
 
         sidebarToggle.addEventListener('click', toggleSidebar);
         sidebarClose.addEventListener('click', toggleSidebar);
-        sidebarOverlay.addEventListener('click', toggleSidebar); // Close when clicking outside
+        sidebarOverlay.addEventListener('click', toggleSidebar); 
 
-        // Close sidebar when a link is clicked (for all sidebar links)
         sidebarLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (sidebarMenu.classList.contains('is-open')) {

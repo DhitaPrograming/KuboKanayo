@@ -6,22 +6,22 @@
     --accent-bold: #FF8C42;
     --accent-grounded: #4A607C;
     --cta-background-dark: #1A202C;
-    --text-body: #333333;
+    --text-body: #333333; /* Dark color for text in light mode */
     --text-subtle: #888888;
     --background-light: #f9f9f9;
     --border-color: #eeeeee;
     --shadow-light: rgba(0, 0, 0, 0.05);
     --shadow-medium: rgba(0, 0, 0, 0.12);
 
-    /* Dark Mode Color Palette */
-    --dark-primary-brand-dark: #E0E0E0;
-    --dark-primary-brand-light: #121212;
-    --dark-accent-bold: #FF8C42;
+    /* Dark Mode Color Palette - UPDATED VALUES */
+    --dark-primary-brand-dark: #FFFFFF;   /* Headings and prominent text in dark mode - Pure White */
+    --dark-primary-brand-light: #121212;  /* Main page background in dark mode */
+    --dark-accent-bold: #FF8C42;      /* Orange accent, same as light mode */
     --dark-accent-grounded: #7B90A8;
     --dark-cta-background-dark: #0A0A0A;
-    --dark-text-body: #F0F0F0;
-    --dark-text-subtle: #B0B0B0;
-    --dark-background-light: #1E1E1E;
+    --dark-text-body: #EAEAEA;          /* Main paragraph text in dark mode - Very Light Gray */
+    --dark-text-subtle: #DCDCDC;        /* Subtle text in dark mode (e.g., footer, some specific paragraphs) - Lighter Gray */
+    --dark-background-light: #1E1E1E;   /* Section background in dark mode */
     --dark-border-color: #333333;
     --dark-shadow-light: rgba(255, 255, 255, 0.05);
     --dark-shadow-medium: rgba(255, 255, 255, 0.1);
@@ -42,12 +42,16 @@
     --spacing-lg: 4rem;
     --spacing-xl: 6rem;
     --spacing-xxl: 8rem;
+
+    /* Navbar specific variables */
+    --navbar-height-approx: 96px; /* Approximate height based on logo and padding */
+    --navbar-top-offset: 20px;
 }
 
 /* Dark Mode Overrides */
 body.dark-mode {
     background-color: var(--dark-primary-brand-light);
-    color: var(--dark-text-body);
+    color: var(--dark-text-body); /* Default text color for dark mode */
 }
 
 body.dark-mode h1,
@@ -59,6 +63,7 @@ body.dark-mode h6 {
     color: var(--dark-primary-brand-dark);
 }
 
+/* Ensuring links are readable in dark mode */
 body.dark-mode a {
     color: var(--dark-accent-grounded);
 }
@@ -66,21 +71,22 @@ body.dark-mode a:hover {
     color: var(--dark-accent-bold);
 }
 
+/* Buttons in Dark Mode */
 body.dark-mode .button {
     background-color: var(--dark-accent-bold);
     border-color: var(--dark-accent-bold);
-    color: var(--dark-primary-brand-light);
+    color: var(--dark-primary-brand-light); /* Text on button */
     box-shadow: 0 4px 10px var(--dark-shadow-light);
 }
 body.dark-mode .button:hover {
-    background-color: var(--dark-primary-brand-dark);
+    background-color: var(--dark-primary-brand-dark); /* Button background on hover */
     border-color: var(--dark-primary-brand-dark);
-    color: var(--dark-primary-brand-light);
+    color: var(--dark-primary-brand-light); /* Text on button on hover */
     box-shadow: 0 8px 15px var(--dark-shadow-medium);
 }
 body.dark-mode .button.secondary {
     background-color: transparent;
-    color: var(--dark-primary-brand-dark);
+    color: var(--dark-primary-brand-dark); /* Text color for secondary button */
     border-color: var(--dark-primary-brand-dark);
 }
 body.dark-mode .button.secondary:hover {
@@ -89,18 +95,20 @@ body.dark-mode .button.secondary:hover {
     border-color: var(--dark-primary-brand-dark);
 }
 
+/* Sections in Dark Mode */
 body.dark-mode section {
-    background-color: var(--dark-background-light);
+    background-color: var(--dark-background-light); /* Default section background */
     box-shadow: 0 5px 15px var(--dark-shadow-light);
 }
 body.dark-mode .homepage-section:nth-child(even) {
-    background-color: var(--dark-primary-brand-light);
+    background-color: var(--dark-primary-brand-light); /* Alternating section background for homepage */
 }
 
+/* Navbar in Dark Mode */
 body.dark-mode .navbar {
-    background-color: rgba(18, 18, 18, 0.8);
-    border-bottom-color: var(--dark-border-color);
-    box-shadow: 0 2px 8px var(--dark-shadow-light);
+    background-color: rgba(18, 18, 18, 0.9); 
+    border-bottom-color: transparent; 
+    box-shadow: 0 2px 12px var(--dark-shadow-medium); 
 }
 body.dark-mode .navbar .site-logo {
     color: var(--dark-primary-brand-dark);
@@ -108,11 +116,13 @@ body.dark-mode .navbar .site-logo {
 body.dark-mode .navbar .nav-links a {
     color: var(--dark-primary-brand-dark);
 }
-body.dark-mode .navbar .hamburger-icon { /* Ensure hamburger icon color changes in dark mode */
+body.dark-mode .navbar .hamburger-icon {
     background-color: var(--dark-primary-brand-dark);
 }
+
+/* Sidebar in Dark Mode */
 body.dark-mode .sidebar-menu {
-    background-color: var(--dark-primary-brand-light);
+    background-color: var(--dark-primary-brand-light); 
     box-shadow: -5px 0 15px var(--dark-shadow-medium);
 }
 body.dark-mode .sidebar-close {
@@ -125,54 +135,72 @@ body.dark-mode .sidebar-content hr {
     border-top-color: var(--dark-border-color);
 }
 body.dark-mode .sidebar-category-link {
-    color: var(--dark-text-body) !important;
+    color: var(--dark-text-body) !important; 
 }
 
+/* Hero Section in Dark Mode */
 body.dark-mode .hero-section {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/hero-background.png') no-repeat center center/cover;
-    background-attachment: fixed;
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/Hero-index.svg') no-repeat center center/cover;
+    background-attachment: scroll; 
 }
 body.dark-mode .hero-section h1,
 body.dark-mode .hero-section .tagline,
 body.dark-mode .hero-section .slogan {
+    color: var(--dark-primary-brand-dark); 
+}
+
+/* Homepage Section Paragraphs (General Override) */
+body.dark-mode .homepage-section p {
+    color: var(--dark-text-body); 
+}
+body.dark-mode .about-snippet .intro-text { 
     color: var(--dark-primary-brand-dark);
 }
 
-
-body.dark-mode .about-snippet .intro-text {
-    color: var(--dark-primary-brand-dark);
-}
-
+/* Service Summary Items in Dark Mode */
 body.dark-mode .service-summary-item {
     background-color: var(--dark-background-light);
     border-color: var(--dark-border-color);
     box-shadow: 0 5px 20px var(--dark-shadow-light);
 }
+body.dark-mode .service-summary-item h3 {
+    color: var(--dark-accent-bold); 
+}
 body.dark-mode .service-summary-item p {
-    color: var(--dark-text-body);
+    color: var(--dark-text-body); 
 }
 
+/* Portfolio Items in Dark Mode */
 body.dark-mode .portfolio-item {
     background-color: var(--dark-background-light);
     border-color: var(--dark-border-color);
     box-shadow: 0 5px 20px var(--dark-shadow-light);
 }
+body.dark-mode .portfolio-item:hover { /* Added hover border for dark mode */
+    border-color: var(--dark-accent-bold);
+}
 body.dark-mode .portfolio-item h3 {
     color: var(--dark-primary-brand-dark);
 }
 body.dark-mode .portfolio-item p {
-    color: var(--dark-text-body);
+    color: var(--dark-text-body); 
 }
 body.dark-mode .portfolio-item .item-link {
     background-color: var(--dark-accent-grounded);
     color: var(--dark-primary-brand-light);
 }
-body.dark-mode .portfolio-item .item-link:hover {
+body.dark-mode .portfolio-item:hover .item-link { /* Added hover for item link in dark mode */
+    background-color: var(--dark-accent-bold);
+    box-shadow: 0 4px 8px var(--dark-shadow-light);
+}
+body.dark-mode .portfolio-item .item-link:hover { /* Original hover, ensure consistency or merge */
     background-color: var(--dark-primary-brand-dark);
     color: var(--dark-primary-brand-light);
     border-color: var(--dark-primary-brand-dark);
 }
 
+
+/* CTA Section in Dark Mode */
 body.dark-mode .homepage-section.cta-section {
     background-color: var(--dark-cta-background-dark) !important;
     background-image: linear-gradient(45deg, var(--dark-cta-background-dark) 0%, #222222 50%, var(--dark-cta-background-dark) 100%) !important;
@@ -182,7 +210,7 @@ body.dark-mode .homepage-section.cta-section h2 {
     color: var(--dark-primary-brand-dark) !important;
 }
 body.dark-mode .homepage-section.cta-section p {
-    color: var(--dark-text-subtle) !important;
+    color: var(--dark-text-subtle) !important; 
 }
 body.dark-mode .homepage-section.cta-section .button {
     background-color: var(--dark-accent-bold);
@@ -195,31 +223,32 @@ body.dark-mode .homepage-section.cta-section .button:hover {
     border-color: var(--dark-primary-brand-dark);
 }
 
+/* Footer in Dark Mode */
 body.dark-mode footer {
-    background-color: var(--dark-primary-brand-light);
-    color: var(--dark-text-subtle);
+    background-color: var(--dark-primary-brand-light); 
+    color: var(--dark-text-subtle); 
     border-top: 1px solid var(--dark-border-color);
 }
-
 body.dark-mode footer p {
-    color: inherit;
+    color: inherit; 
 }
 
+/* Contact Form in Dark Mode */
 body.dark-mode .contact-form input,
 body.dark-mode .contact-form textarea {
     background-color: var(--dark-background-light);
     border-color: var(--dark-border-color);
-    color: var(--dark-text-body);
+    color: var(--dark-text-body); 
 }
 body.dark-mode .contact-form input::placeholder,
 body.dark-mode .contact-form textarea::placeholder {
-    color: var(--dark-text-subtle);
+    color: var(--dark-text-subtle); 
 }
 body.dark-mode .contact-form input:focus,
 body.dark-mode .contact-form textarea:focus {
     border-color: var(--dark-accent-bold);
     box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
-    background-color: var(--dark-primary-brand-light);
+    background-color: var(--dark-primary-brand-light); 
 }
 body.dark-mode .contact-form .file-label {
     color: var(--dark-primary-brand-dark);
@@ -253,6 +282,7 @@ body.dark-mode .contact-social-links a:hover {
     color: var(--dark-accent-bold);
 }
 
+/* 404 Page in Dark Mode */
 body.dark-mode .error-404-section h1 {
     color: var(--dark-accent-bold);
 }
@@ -260,6 +290,114 @@ body.dark-mode .error-404-section h2 {
     color: var(--dark-primary-brand-dark);
 }
 body.dark-mode .error-404-section p {
+    color: var(--dark-text-body); 
+}
+
+/* --- SPECIFIC DARK MODE OVERRIDES FOR PARAGRAPHS --- */
+body.dark-mode .about-section p {
+    color: var(--dark-text-body); 
+}
+body.dark-mode .services-section > p { 
+    color: var(--dark-text-body);
+}
+body.dark-mode .service-item p { 
+    color: var(--dark-text-body);
+}
+body.dark-mode .portfolio-section > p { 
+    color: var(--dark-text-body);
+}
+
+/* --- Accessibility Enhancements --- NEW --- */
+/* Clearer Focus States */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+.filter-button:focus-visible,
+.sidebar-close:focus-visible,
+.sidebar-toggle:focus-visible,
+.contact-form input[type="file"]:focus-visible + .file-chosen::before {
+  outline: 3px solid var(--accent-bold) !important; /* Ensure visibility */
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 5px rgba(255, 140, 66, 0.3) !important; /* Softer glow */
+  /* z-index: 9999; /* If needed to bring focus outline on top of other elements */
+}
+
+body.dark-mode a:focus-visible,
+body.dark-mode button:focus-visible,
+body.dark-mode input:focus-visible,
+body.dark-mode textarea:focus-visible,
+body.dark-mode select:focus-visible,
+body.dark-mode .filter-button:focus-visible,
+body.dark-mode .sidebar-close:focus-visible,
+body.dark-mode .sidebar-toggle:focus-visible,
+body.dark-mode .contact-form input[type="file"]:focus-visible + .file-chosen::before {
+  outline-color: var(--dark-accent-bold) !important;
+  box-shadow: 0 0 0 5px rgba(255, 140, 66, 0.4) !important;
+}
+
+/* Minimal fallback for browsers not fully supporting :focus-visible or for general :focus */
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+    outline-style: dotted; /* A subtle default if no other focus style is caught */
+    outline-width: 1px;
+    outline-color: var(--accent-grounded);
+}
+body.dark-mode a:focus, 
+body.dark-mode button:focus, 
+body.dark-mode input:focus, 
+body.dark-mode textarea:focus, 
+body.dark-mode select:focus {
+    outline-color: var(--dark-accent-grounded);
+}
+
+
+/* --- Brand Values Section (for about.html) --- NEW --- */
+.about-values { 
+    text-align: center;
+    /* Padding can be inherited if nested in .about-section or defined here if standalone */
+    /* Example if standalone: padding: var(--spacing-xl) var(--spacing-md); */
+}
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    text-align: left;
+}
+.value-item {
+    background-color: var(--background-light); 
+    padding: var(--spacing-lg);
+    border-radius: var(--spacing-xs);
+    box-shadow: 0 5px 15px var(--shadow-light);
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.value-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px var(--shadow-medium);
+}
+.value-item h3 {
+    color: var(--accent-bold);
+    font-size: var(--h3-font-size); 
+    margin-bottom: var(--spacing-sm);
+}
+.value-item p {
+    font-size: var(--p-font-size);
+    color: var(--text-body);
+    line-height: 1.6;
+    margin-bottom: 0; 
+}
+
+body.dark-mode .value-item {
+    background-color: var(--dark-background-light);
+    box-shadow: 0 5px 15px var(--dark-shadow-light);
+    border-color: var(--dark-border-color);
+}
+body.dark-mode .value-item h3 {
+    color: var(--dark-accent-bold);
+}
+body.dark-mode .value-item p {
     color: var(--dark-text-body);
 }
 
@@ -278,17 +416,17 @@ html {
 body {
     font-family: var(--font-body);
     line-height: 1.6;
-    color: var(--text-body);
+    color: var(--text-body); 
     background-color: var(--primary-brand-light);
     text-align: center;
-    padding-top: 80px;
+    padding-top: 0; 
     overflow-x: hidden;
 }
 
 /* Headings */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    color: var(--primary-brand-dark);
+    color: var(--primary-brand-dark); 
     line-height: 1.1;
     font-weight: 700;
     margin-bottom: var(--spacing-sm);
@@ -358,26 +496,24 @@ a:hover {
 
 /* General Section Styles */
 section {
-    padding: var(--spacing-xxl) var(--spacing-md);
+    /* padding: var(--spacing-xxl) var(--spacing-md); Default padding for sections - overridden by specific rules below */
     max-width: 1400px;
     margin: 0 auto;
-    background-color: var(--primary-brand-light);
+    background-color: var(--primary-brand-light); 
 }
 
-/* --- Navigation Bar --- */
+/* --- Navigation Bar --- MODIFIED FOR OVAL SHAPE --- */
 .navbar {
-    background-color: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(0);
-    -webkit-backdrop-filter: blur(0);
-    border-bottom: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.95); 
     position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    transform: translateX(0);
+    width: clamp(calc(100% - 40px), 90%, 1300px); 
+    max-width: 1300px; 
+    top: var(--navbar-top-offset); 
+    left: 50%;
+    transform: translateX(-50%); 
     z-index: 1000;
-    box-shadow: 0 2px 8px var(--shadow-light);
-    border-radius: 0;
+    box-shadow: 0 4px 15px var(--shadow-medium); 
+    border-radius: 100px; 
     box-sizing: border-box;
     padding: var(--spacing-sm) var(--spacing-md);
     transition: all 0.3s ease-in-out;
@@ -387,9 +523,10 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1400px;
+    width: 100%; 
+    max-width: 100%; 
     margin: 0 auto;
-    padding: 0;
+    padding: 0; 
 }
 
 .navbar .site-logo {
@@ -406,7 +543,7 @@ section {
 }
 
 .navbar .site-logo img {
-    max-height: 48px;
+    max-height: 48px; 
     width: auto;
     transition: transform 0.2s ease;
 }
@@ -449,28 +586,27 @@ section {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    color: var(--primary-brand-dark);
+    color: var(--primary-brand-dark); 
     transition: background-color 0.2s ease, color 0.2s ease;
     vertical-align: middle;
     margin-left: var(--spacing-lg);
 }
+body.dark-mode #theme-toggle { 
+    color: var(--dark-primary-brand-dark);
+}
+
 
 #theme-toggle:hover {
     background-color: rgba(0,0,0,0.07);
+}
+body.dark-mode #theme-toggle:hover {
+    background-color: rgba(255,255,255,0.1);
 }
 
 #theme-toggle .icon-sun,
 #theme-toggle .icon-moon {
     font-size: 1.2rem;
     line-height: 1;
-}
-
-body.dark-mode #theme-toggle {
-    color: var(--dark-primary-brand-dark);
-}
-
-body.dark-mode #theme-toggle:hover {
-    background-color: rgba(255,255,255,0.1);
 }
 
 body:not(.dark-mode) #theme-toggle .icon-moon { display: none; }
@@ -480,59 +616,54 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
 
 
 .sidebar-toggle {
-    display: none; /* Hidden by default on desktop */
+    display: none; 
     background: none;
     border: none;
     cursor: pointer;
-    padding: 8px 5px; /* Adjusted padding for better control over clickable area vs icon area */
+    padding: 8px 5px;
     position: relative;
     z-index: 1001;
     flex-direction: column;
-    justify-content: space-between; /* This creates space between bars */
+    justify-content: space-between;
     width: 30px;
-    height: 17px; /* Total height for 3 bars (3px each) + 2 gaps (4px each) = 9 + 8 = 17px */
+    height: 17px;
     transition: transform 0.3s ease;
     margin-left: var(--spacing-sm);
-    box-sizing: content-box; /* Padding will be outside this height/width */
+    box-sizing: content-box;
 }
 
 .hamburger-icon {
     display: block;
     width: 100%;
     height: 3px;
-    background-color: var(--primary-brand-dark);
+    background-color: var(--primary-brand-dark); 
     border-radius: 2px;
     transition: all 0.3s ease-in-out;
     position: relative;
 }
 
-/* Creative Hover Effect - "Sliding Bars" */
 .sidebar-toggle:not(.is-open):hover .hamburger-icon:nth-child(1) {
     transform: translateX(3px);
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
-
 .sidebar-toggle:not(.is-open):hover .hamburger-icon:nth-child(2) {
     transform: translateX(-2px);
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
-
 .sidebar-toggle:not(.is-open):hover .hamburger-icon:nth-child(3) {
     transform: translateX(3px);
     transition-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }
 
-
-/* Animation for hamburger icon when sidebar is open (transform to X) */
 .sidebar-toggle.is-open .hamburger-icon:nth-child(1) {
-    transform: translateY(7px) rotate(45deg); /* Adjusted for 17px height & 4px gap */
+    transform: translateY(7px) rotate(45deg);
 }
 .sidebar-toggle.is-open .hamburger-icon:nth-child(2) {
     opacity: 0;
     transform: translateX(-100%);
 }
 .sidebar-toggle.is-open .hamburger-icon:nth-child(3) {
-    transform: translateY(-7px) rotate(-45deg); /* Adjusted for 17px height & 4px gap */
+    transform: translateY(-7px) rotate(-45deg);
 }
 
 
@@ -563,15 +694,16 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     right: -300px;
     width: 300px;
     height: 100%;
-    background-color: var(--primary-brand-light);
+    background-color: var(--primary-brand-light); 
     box-shadow: -5px 0 15px var(--shadow-medium);
     z-index: 1000;
     transition: right 0.3s ease-out;
     flex-direction: column;
     padding: var(--spacing-md);
-    padding-top: 80px;
+    padding-top: calc(var(--navbar-top-offset) + var(--navbar-height-approx) + 20px); 
     overflow-y: auto;
 }
+
 
 .sidebar-menu.is-open {
     display: flex;
@@ -582,10 +714,10 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     background: none;
     border: none;
     font-size: 2.5rem;
-    color: var(--primary-brand-dark);
+    color: var(--primary-brand-dark); 
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: var(--navbar-top-offset); 
+    right: 20px; 
     cursor: pointer;
     line-height: 1;
     padding: 5px 10px;
@@ -605,11 +737,11 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     flex-direction: column;
     gap: var(--spacing-sm);
     text-align: left;
-    padding-top: var(--spacing-md);
+    padding-top: var(--spacing-md); 
 }
 
 .sidebar-content a {
-    color: var(--primary-brand-dark);
+    color: var(--primary-brand-dark); 
     font-size: var(--p-font-size);
     font-weight: 500;
     padding: var(--spacing-xs) var(--spacing-sm);
@@ -625,13 +757,14 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
 
 .sidebar-content hr {
     border: none;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border-color); 
     margin: var(--spacing-md) 0;
 }
 
+
 .sidebar-category-link {
     font-size: var(--small-text-size) !important;
-    color: var(--text-body) !important;
+    color: var(--text-body) !important; 
     font-weight: 400 !important;
     text-transform: none !important;
     padding-left: var(--spacing-lg) !important;
@@ -644,16 +777,20 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
 
 /* --- Hero Section (Homepage Only) --- */
 .hero-section {
-    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/hero-background.png') no-repeat center center/cover;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('images/Hero-index.svg') no-repeat center center/cover;
     color: var(--primary-brand-light);
-    padding: var(--spacing-xxl) var(--spacing-md);
-    min-height: 90vh;
+    padding-top: calc(var(--navbar-top-offset) + var(--navbar-height-approx) + var(--spacing-lg));
+    padding-bottom: var(--spacing-xxl); 
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    min-height: 100vh; 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    background-attachment: fixed;
+    background-attachment: scroll; 
+    box-sizing: border-box; 
 }
 
 .hero-section h1 {
@@ -681,16 +818,31 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     text-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
 
-/* --- Homepage Specific Sections --- */
+/* --- Homepage Specific Sections & Other Page Top Sections Padding --- */
+.homepage-section:not(.hero-section), 
+.about-section, /* This includes .about-values if it's nested or has .about-section class */
+.services-section, 
+.portfolio-section, 
+.contact-section, 
+.error-404-section {
+    padding-top: calc(var(--navbar-top-offset) + var(--navbar-height-approx) + var(--spacing-xl));
+    padding-bottom: var(--spacing-xxl); 
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+    max-width: 1400px; /* Ensuring these sections also have a max-width if not already there */
+    margin: 0 auto; /* Centering */
+}
+
+
 .homepage-section {
-    padding: var(--spacing-xxl) var(--spacing-md);
     max-width: 1400px;
     margin: 0 auto;
 }
 
-.homepage-section:nth-child(even) {
+.homepage-section:nth-child(even):not(.hero-section) { 
     background-color: var(--background-light);
 }
+
 
 .homepage-section h2 {
     font-size: var(--h2-font-size);
@@ -703,6 +855,7 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     margin-right: auto;
     color: var(--text-body);
 }
+
 
 .about-snippet {
     text-align: center;
@@ -718,6 +871,7 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     margin-right: auto;
     color: var(--primary-brand-dark);
 }
+
 
 .services-overview {
     text-align: center;
@@ -743,7 +897,7 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
 
 .service-summary-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px var(--shadow-medium);
+    box-shadow: 0 10px 25px var(--shadow-medium);
 }
 
 .service-summary-item h3 {
@@ -759,6 +913,7 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     margin-bottom: 0;
 }
 
+
 .featured-portfolio {
     text-align: center;
 }
@@ -771,29 +926,26 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     margin-bottom: var(--spacing-xl);
 }
 
+/* Portfolio Item Hover Enhancement - NEW/MODIFIED */
 .portfolio-item {
     background-color: var(--primary-brand-light);
     border-radius: var(--spacing-xs);
     padding: var(--spacing-md);
     text-align: left;
     box-shadow: 0 5px 20px var(--shadow-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Added border-color transition */
+    overflow: hidden; /* For image zoom */
     border: 1px solid var(--border-color);
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    /* transition for fade-in is handled by JS/CSS for .is-visible */
     will-change: opacity, transform;
 }
 
 .portfolio-item.is-visible {
     opacity: 1;
     transform: translateY(0);
-}
-
-.portfolio-item:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px var(--shadow-medium);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Ensure this exists */
 }
 
 .portfolio-item img {
@@ -803,7 +955,42 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     border-radius: var(--spacing-xs);
     margin-bottom: var(--spacing-sm);
     display: block;
+    transition: transform 0.35s ease-out; /* For the zoom effect */
 }
+
+.portfolio-item:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px var(--shadow-medium);
+    border-color: var(--accent-bold); /* Highlight border on hover */
+}
+.portfolio-item:hover img {
+    transform: scale(1.05); /* Subtle zoom on image */
+}
+
+.portfolio-item .item-link {
+    display: inline-block;
+    background-color: var(--accent-grounded);
+    color: var(--primary-brand-light);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+    font-size: var(--small-text-size);
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
+}
+
+.portfolio-item:hover .item-link { /* Make link more prominent on portfolio item hover */
+    background-color: var(--accent-bold); 
+    transform: translateY(-2px) scale(1.03); 
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+body.dark-mode .portfolio-item:hover .item-link {
+    background-color: var(--dark-accent-bold);
+    box-shadow: 0 4px 8px var(--dark-shadow-light);
+}
+/* Original .item-link:hover is now combined or overridden by the above context-specific hover */
+
 
 .portfolio-item h3 {
     font-size: var(--h3-font-size);
@@ -817,30 +1004,10 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     margin-bottom: var(--spacing-sm);
 }
 
-.portfolio-item .item-link {
-    display: inline-block;
-    background-color: var(--accent-grounded);
-    color: var(--primary-brand-light);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    border-radius: var(--spacing-xs);
-    margin-top: var(--spacing-xs);
-    font-size: var(--small-text-size);
-    text-transform: uppercase;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.portfolio-item .item-link:hover {
-    background-color: var(--primary-brand-dark);
-    transform: translateY(-2px);
-    text-decoration: none;
-}
-
 .homepage-section.cta-section {
     background-color: var(--cta-background-dark) !important;
     color: var(--primary-brand-light) !important;
     text-align: center;
-    padding: var(--spacing-xxl) var(--spacing-md);
     margin-bottom: 0;
     box-shadow: none;
     border-radius: 0;
@@ -850,6 +1017,7 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     transition: background-color 0.5s ease;
 }
 
+
 @keyframes gradientShift {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
@@ -858,8 +1026,6 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
 
 .homepage-section.cta-section h2 {
     color: var(--primary-brand-light) !important;
-    font-size: var(--h2-font-size);
-    margin-bottom: var(--spacing-lg);
 }
 
 .homepage-section.cta-section p {
@@ -889,23 +1055,22 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
 }
 
 /* --- About Page Section --- */
-.about-section {
+.about-section { /* This rule is for the main about intro and philosophy */
     text-align: center;
-    padding: var(--spacing-xxl) var(--spacing-md);
 }
 
-.about-section h2 {
+.about-section h2 { /* Title "About KuboKanayo Creative" */
     font-size: var(--h2-font-size);
     margin-bottom: var(--spacing-lg);
 }
 
-.about-section h3 {
+.about-section h3 { /* Subtitle "Our Philosophy..." */
     font-size: var(--h3-font-size);
     margin-top: var(--spacing-xl);
     margin-bottom: var(--spacing-md);
 }
 
-.about-section p {
+.about-section p { /* Paragraphs in main about and philosophy */
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -914,13 +1079,12 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     color: var(--text-body);
 }
 
+
 /* --- Services Page Section --- */
 .services-section {
     text-align: center;
-    padding: var(--spacing-xxl) var(--spacing-md);
     background-color: var(--primary-brand-light);
 }
-
 body.dark-mode .services-section {
     background-color: var(--dark-primary-brand-light);
 }
@@ -942,9 +1106,6 @@ body.dark-mode .services-section h2 {
     font-size: var(--p-font-size);
     color: var(--text-body);
     line-height: 1.7;
-}
-body.dark-mode .services-section > p {
-    color: var(--dark-text-subtle);
 }
 
 .services-grid {
@@ -970,7 +1131,6 @@ body.dark-mode .services-section > p {
     position: relative;
     overflow: hidden;
 }
-
 body.dark-mode .service-item {
     background-color: var(--dark-background-light);
     color: var(--dark-text-body);
@@ -983,7 +1143,6 @@ body.dark-mode .service-item {
     box-shadow: 0 15px 35px var(--shadow-medium);
     border-color: var(--accent-bold);
 }
-
 body.dark-mode .service-item:hover {
     border-color: var(--dark-accent-bold);
     box-shadow: 0 15px 35px var(--dark-shadow-medium);
@@ -1003,7 +1162,6 @@ body.dark-mode .service-item:hover {
     transform: translateX(10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
 body.dark-mode .service-item::after {
     color: var(--dark-accent-bold);
 }
@@ -1030,14 +1188,11 @@ body.dark-mode .service-item h3 {
     margin-bottom: 0;
     flex-grow: 1;
 }
-body.dark-mode .service-item p {
-    color: var(--dark-text-subtle);
-}
+
 
 /* --- Portfolio Page Section --- */
 .portfolio-section {
     text-align: center;
-    padding: var(--spacing-xxl) var(--spacing-md);
 }
 
 .portfolio-section h2 {
@@ -1054,7 +1209,7 @@ body.dark-mode .service-item p {
     color: var(--text-body);
 }
 
-/* Portfolio Filter Buttons - Default (Desktop) */
+
 .filter-buttons {
     margin-bottom: var(--spacing-xl);
     display: flex;
@@ -1109,7 +1264,6 @@ body.dark-mode .service-item p {
 /* --- Contact Page Section --- */
 .contact-section {
     text-align: center;
-    padding: var(--spacing-xxl) var(--spacing-md);
     max-width: 1200px;
     margin: 0 auto;
 }
@@ -1128,6 +1282,7 @@ body.dark-mode .service-item p {
     font-size: var(--p-font-size);
     color: var(--text-body);
 }
+
 
 .contact-form {
     margin-top: var(--spacing-xl);
@@ -1180,16 +1335,17 @@ body.dark-mode .service-item p {
 .contact-form input::placeholder,
 .contact-form textarea::placeholder {
     color: var(--text-subtle);
-    font-weight: 300;
 }
 
-.contact-form input:focus,
+
+.contact-form input:focus, /* These general focus styles will be enhanced by :focus-visible */
 .contact-form textarea:focus {
     border-color: var(--accent-bold);
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2);
-    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2); /* Original focus glow, :focus-visible will override */
+    outline: none; /* Often good to remove default if custom glow is provided */
     background-color: var(--primary-brand-light);
 }
+
 
 .file-upload-group {
     display: flex;
@@ -1202,8 +1358,8 @@ body.dark-mode .service-item p {
     font-weight: 600;
     margin-bottom: var(--spacing-xs);
     color: var(--primary-brand-dark);
-    font-size: var(--small-text-size);
 }
+
 
 .file-input {
     opacity: 0;
@@ -1231,6 +1387,7 @@ body.dark-mode .service-item p {
     font-size: var(--small-text-size);
 }
 
+
 .file-input:hover + .file-chosen::before {
     background: var(--primary-brand-dark);
     transform: translateY(-2px);
@@ -1240,8 +1397,8 @@ body.dark-mode .service-item p {
     display: flex;
     align-items: center;
     color: var(--text-body);
-    font-size: var(--small-text-size);
 }
+
 
 .file-info {
     font-size: 0.75rem;
@@ -1249,6 +1406,7 @@ body.dark-mode .service-item p {
     margin-top: var(--spacing-xs);
     margin-bottom: 0;
 }
+
 
 .submit-button {
     display: block;
@@ -1267,6 +1425,7 @@ body.dark-mode .service-item p {
     font-weight: 700;
     box-shadow: 0 6px 15px var(--shadow-medium);
 }
+
 
 .submit-button:hover {
     background-color: var(--primary-brand-dark);
@@ -1311,17 +1470,18 @@ footer {
     margin-top: var(--spacing-lg);
 }
 
+
 footer p {
     margin: 0.4rem 0;
     color: rgba(255, 255, 255, 0.7);
     line-height: 1.5;
 }
 
+
 /* --- 404 Page Specific Styles --- */
 .error-404-section {
-    padding: var(--spacing-xxl) var(--spacing-md);
     text-align: center;
-    min-height: calc(100vh - 160px);
+    min-height: calc(100vh - 160px); 
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1331,9 +1491,6 @@ footer p {
 .error-404-section h1 {
     font-size: 8rem;
     color: var(--accent-bold);
-    margin-bottom: var(--spacing-sm);
-    line-height: 1;
-    font-weight: 900;
 }
 
 .error-404-section h2 {
@@ -1348,6 +1505,7 @@ footer p {
     margin: 0 auto var(--spacing-lg) auto;
     color: var(--text-body);
 }
+
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 1200px) {
@@ -1368,36 +1526,47 @@ footer p {
     }
 
     .hero-section {
-        min-height: 80vh;
+        min-height: 90vh; 
+        padding-top: calc(var(--navbar-top-offset) + var(--navbar-height-approx) + var(--spacing-md)); 
+    }
+    .homepage-section:not(.hero-section), 
+    .about-section, 
+    .services-section, 
+    .portfolio-section, 
+    .contact-section, 
+    .error-404-section {
+        padding-top: calc(var(--navbar-top-offset) + var(--navbar-height-approx) + var(--spacing-lg));
     }
 
-    .homepage-section, section {
-        padding: var(--spacing-xl) var(--spacing-md);
+
+    .homepage-section, section:not(.hero-section) { 
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
     }
+
 
     .portfolio-grid {
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     }
 
     .navbar {
-        width: 100%;
-        border-radius: 0;
-        margin-top: 0;
-        top: 0;
-        transform: translateX(0);
-        padding: var(--spacing-sm) var(--spacing-md);
-    }
-    .navbar .container {
-        padding: 0;
+        width: clamp(calc(100% - 30px), 92%, 1300px); 
+        padding: calc(var(--spacing-sm) - 4px) calc(var(--spacing-md) - 10px);
     }
     .navbar .site-logo img {
         max-height: 40px;
     }
+    .navbar .nav-links {
+        gap: var(--spacing-md); 
+    }
     .navbar .nav-links a {
         font-size: 0.85rem;
     }
+    #theme-toggle {
+        margin-left: var(--spacing-md); 
+    }
 
-    /* Portfolio Filters: Horizontal Scroll for Tablets and Narrower Desktops */
+
     .filter-buttons {
         gap: var(--spacing-sm);
         padding: 0 var(--spacing-xs);
@@ -1416,7 +1585,6 @@ footer p {
         scrollbar-width: thin;
         scrollbar-color: var(--accent-grounded) transparent;
     }
-
     body.dark-mode .filter-row-bottom {
         scrollbar-color: var(--dark-accent-grounded) var(--dark-background-light);
     }
@@ -1462,20 +1630,47 @@ footer p {
 }
 
 @media (max-width: 768px) {
-    body {
-        padding-top: 70px;
+    :root {
+        --navbar-height-approx-mobile: 70px; 
+        --navbar-top-offset-mobile: 15px;
+        /* Font sizes for this breakpoint */
+        --h1-font-size: 2.8rem;
+        --h2-font-size: 2rem;
+        --h3-font-size: 1.6rem;
+        --p-font-size: 0.95rem;
+        --small-text-size: 0.85rem;
     }
+
+    .navbar {
+        width: clamp(calc(100% - 20px), 95%, 1300px); 
+        padding: var(--spacing-xs) var(--spacing-sm); 
+        top: var(--navbar-top-offset-mobile);
+    }
+
+    .hero-section {
+        padding-top: calc(var(--navbar-top-offset-mobile) + var(--navbar-height-approx-mobile) + var(--spacing-md));
+        min-height: 90vh; 
+    }
+    .homepage-section:not(.hero-section), 
+    .about-section, 
+    .services-section, 
+    .portfolio-section, 
+    .contact-section, 
+    .error-404-section {
+        padding-top: calc(var(--navbar-top-offset-mobile) + var(--navbar-height-approx-mobile) + var(--spacing-lg));
+    }
+
     .navbar .site-logo {
-        margin-right: 0;
+        margin-right: 0; 
     }
     .navbar .site-logo img {
-        max-height: 35px;
+        max-height: 35px; 
     }
     .navbar .container {
         justify-content: space-between;
     }
     .navbar .nav-links {
-        display: none;
+        display: none; 
     }
 
     #theme-toggle {
@@ -1483,7 +1678,7 @@ footer p {
         padding: 6px;
         width: 36px;
         height: 36px;
-        margin-left: auto;
+        margin-left: auto; 
         margin-right: var(--spacing-xs);
     }
 
@@ -1493,28 +1688,16 @@ footer p {
     }
 
     .sidebar-toggle {
-        display: flex !important; /* Ensure it's flex to apply justify-content */
-        margin-left: 0;
-        /* height and padding are set in the base rule, ensure they are appropriate */
+        display: flex !important;
+        margin-left: 0; 
     }
 
-    :root {
-        --h1-font-size: 2.8rem;
-        --h2-font-size: 2rem;
-        --h3-font-size: 1.6rem;
-        --p-font-size: 0.95rem;
-        --small-text-size: 0.85rem;
-    }
-
-    .hero-section {
-        padding: var(--spacing-lg) var(--spacing-sm);
-        min-height: 70vh;
-    }
     .hero-section h1 { font-size: var(--h1-font-size); }
     .hero-section .tagline, .hero-section .slogan { font-size: var(--h3-font-size); }
 
-    .homepage-section, section {
-        padding: var(--spacing-lg) var(--spacing-sm);
+    .homepage-section, section:not(.hero-section) {
+        padding-left: var(--spacing-sm);
+        padding-right: var(--spacing-sm);
     }
 
     .about-snippet .intro-text {
@@ -1540,9 +1723,6 @@ footer p {
         height: 250px;
     }
 
-    .homepage-section.cta-section {
-        padding: var(--spacing-xl) var(--spacing-sm);
-    }
     .homepage-section.cta-section h2 { font-size: var(--h2-font-size); }
     .homepage-section.cta-section p { font-size: var(--p-font-size); }
 
@@ -1563,6 +1743,9 @@ footer p {
     .error-404-section h1 { font-size: 5rem; }
     .error-404-section h2 { font-size: 2rem; }
 
+    .sidebar-menu {
+         padding-top: calc(var(--navbar-top-offset-mobile) + var(--navbar-height-approx-mobile) + 10px);
+    }
     .sidebar-content {
         display: flex;
         flex-direction: column;
@@ -1592,11 +1775,35 @@ footer p {
 
 @media (max-width: 480px) {
     :root {
+        --navbar-height-approx-mobile: 60px; 
+        --navbar-top-offset-mobile: 10px;
+         /* Font sizes for this breakpoint */
         --h1-font-size: 2.2rem;
         --h2-font-size: 1.8rem;
         --h3-font-size: 1.4rem;
         --p-font-size: 0.9rem;
     }
+    .navbar {
+        padding: calc(var(--spacing-xs) - 2px) calc(var(--spacing-sm) - 5px);
+        width: clamp(calc(100% - 20px), 96%, 1300px);
+        top: var(--navbar-top-offset-mobile);
+    }
+    .navbar .site-logo img {
+        max-height: 30px;
+    }
+
+    .hero-section {
+        padding-top: calc(var(--navbar-top-offset-mobile) + var(--navbar-height-approx-mobile) + var(--spacing-sm));
+    }
+    .homepage-section:not(.hero-section), 
+    .about-section, 
+    .services-section, 
+    .portfolio-section, 
+    .contact-section, 
+    .error-404-section {
+        padding-top: calc(var(--navbar-top-offset-mobile) + var(--navbar-height-approx-mobile) + var(--spacing-md));
+    }
+
 
     .hero-section h1 { font-size: var(--h1-font-size); }
     .hero-section .tagline, .hero-section .slogan { font-size: var(--h3-font-size); }
@@ -1635,9 +1842,6 @@ footer p {
         padding: var(--spacing-xs) var(--spacing-xs);
     }
 
-    .navbar .site-logo img {
-        max-height: 30px;
-    }
 
     footer {
         padding: var(--spacing-xs) var(--spacing-xs);
