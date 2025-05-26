@@ -143,7 +143,7 @@ body.dark-mode .hero-section {
     background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('images/Hero-index.svg') no-repeat center center/cover;
     background-attachment: scroll; 
 }
-body.dark-mode .hero-section h1,
+body.dark-mode .hero-title, 
 body.dark-mode .hero-section .tagline,
 body.dark-mode .hero-section .slogan {
     color: var(--dark-primary-brand-dark); 
@@ -169,6 +169,19 @@ body.dark-mode .service-summary-item h3 {
 body.dark-mode .service-summary-item p {
     color: var(--dark-text-body); 
 }
+body.dark-mode .service-summary-item::before { 
+    background-color: var(--dark-accent-bold);
+}
+body.dark-mode .service-summary-item[data-service-icon="digital"]::before {
+    border-color: var(--dark-accent-bold);
+}
+body.dark-mode .service-summary-item[data-service-icon="product"]::before {
+    border-color: var(--dark-accent-bold);
+}
+body.dark-mode .service-summary-item[data-service-icon="immersive"]::before {
+    border-color: var(--dark-accent-bold);
+}
+
 
 /* Portfolio Items in Dark Mode */
 body.dark-mode .portfolio-item {
@@ -176,7 +189,7 @@ body.dark-mode .portfolio-item {
     border-color: var(--dark-border-color);
     box-shadow: 0 5px 20px var(--dark-shadow-light);
 }
-body.dark-mode .portfolio-item:hover { /* Added hover border for dark mode */
+body.dark-mode .portfolio-item:hover {
     border-color: var(--dark-accent-bold);
 }
 body.dark-mode .portfolio-item h3 {
@@ -189,16 +202,11 @@ body.dark-mode .portfolio-item .item-link {
     background-color: var(--dark-accent-grounded);
     color: var(--dark-primary-brand-light);
 }
-body.dark-mode .portfolio-item:hover .item-link { /* Added hover for item link in dark mode */
-    background-color: var(--dark-accent-bold);
+body.dark-mode .portfolio-item:hover .item-link {
+    background-color: var(--dark-accent-bold); 
+    color: var(--dark-primary-brand-light);   
     box-shadow: 0 4px 8px var(--dark-shadow-light);
 }
-body.dark-mode .portfolio-item .item-link:hover { /* Original hover, ensure consistency or merge */
-    background-color: var(--dark-primary-brand-dark);
-    color: var(--dark-primary-brand-light);
-    border-color: var(--dark-primary-brand-dark);
-}
-
 
 /* CTA Section in Dark Mode */
 body.dark-mode .homepage-section.cta-section {
@@ -212,16 +220,20 @@ body.dark-mode .homepage-section.cta-section h2 {
 body.dark-mode .homepage-section.cta-section p {
     color: var(--dark-text-subtle) !important; 
 }
-body.dark-mode .homepage-section.cta-section .button {
+body.dark-mode .homepage-section.cta-section .button.cta-button { 
     background-color: var(--dark-accent-bold);
     border-color: var(--dark-accent-bold);
     color: var(--dark-primary-brand-light);
 }
-body.dark-mode .homepage-section.cta-section .button:hover {
+body.dark-mode .homepage-section.cta-section .button.cta-button:hover {
     background-color: var(--dark-primary-brand-dark);
     color: var(--dark-primary-brand-light);
     border-color: var(--dark-primary-brand-dark);
 }
+body.dark-mode .homepage-section.cta-section .button.cta-button:hover::before { 
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+}
+
 
 /* Footer in Dark Mode */
 body.dark-mode footer {
@@ -234,21 +246,45 @@ body.dark-mode footer p {
 }
 
 /* Contact Form in Dark Mode */
-body.dark-mode .contact-form input,
+body.dark-mode .contact-form input[type="text"],
+body.dark-mode .contact-form input[type="email"],
+body.dark-mode .contact-form input[type="tel"],
+body.dark-mode .contact-form select,
 body.dark-mode .contact-form textarea {
     background-color: var(--dark-background-light);
     border-color: var(--dark-border-color);
     color: var(--dark-text-body); 
 }
-body.dark-mode .contact-form input::placeholder,
-body.dark-mode .contact-form textarea::placeholder {
-    color: var(--dark-text-subtle); 
+body.dark-mode .floating-label-group label { /* Label color in dark mode */
+    background-color: var(--dark-background-light); /* Match input for clean float */
+    color: var(--dark-text-subtle);
 }
-body.dark-mode .contact-form input:focus,
+body.dark-mode .floating-label-group input:focus ~ label,
+body.dark-mode .floating-label-group input:not(:placeholder-shown) ~ label,
+body.dark-mode .floating-label-group textarea:focus ~ label,
+body.dark-mode .floating-label-group textarea:not(:placeholder-shown) ~ label,
+body.dark-mode .floating-label-group select:focus ~ label,
+body.dark-mode .floating-label-group select.label-floated ~ label, /* JS will add this class */
+body.dark-mode .floating-label-group select:valid ~ label {
+    color: var(--dark-accent-bold);
+}
+body.dark-mode .contact-form select { 
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23EAEAEA' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+}
+body.dark-mode .contact-form select.placeholder-shown { 
+    color: var(--dark-text-subtle);
+}
+body.dark-mode .contact-form option { 
+    color: var(--dark-text-body);
+    background-color: var(--dark-background-light); 
+}
+
+body.dark-mode .contact-form input:focus, 
+body.dark-mode .contact-form select:focus,
 body.dark-mode .contact-form textarea:focus {
     border-color: var(--dark-accent-bold);
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.3);
-    background-color: var(--dark-primary-brand-light); 
+    background-color: #2a2a2a; /* Slightly lighter dark input on focus */
+    box-shadow: 0 0 8px rgba(255, 140, 66, 0.3); /* Softer glow */
 }
 body.dark-mode .contact-form .file-label {
     color: var(--dark-primary-brand-dark);
@@ -266,21 +302,31 @@ body.dark-mode .file-chosen {
 body.dark-mode .file-info {
     color: var(--dark-text-subtle);
 }
-body.dark-mode .submit-button {
+body.dark-mode .submit-button.contact-submit-button { 
     background-color: var(--dark-accent-bold);
     border-color: var(--dark-accent-bold);
     color: var(--dark-primary-brand-light);
 }
-body.dark-mode .submit-button:hover {
+body.dark-mode .submit-button.contact-submit-button:hover {
     background-color: var(--dark-primary-brand-dark);
     border-color: var(--dark-primary-brand-dark);
 }
-body.dark-mode .contact-social-links a {
-    color: var(--dark-accent-grounded);
+body.dark-mode .submit-button.contact-submit-button:active {
+    filter: brightness(0.8);
 }
-body.dark-mode .contact-social-links a:hover {
+body.dark-mode .contact-social-links a.social-link-animated:hover {
     color: var(--dark-accent-bold);
 }
+body.dark-mode .contact-social-links a.social-link-animated:hover::after {
+    background-color: var(--dark-accent-bold);
+}
+body.dark-mode .contact-social-links h3::after {
+    background-color: var(--dark-accent-bold);
+}
+body.dark-mode .form-helper-text {
+    color: var(--dark-text-subtle);
+}
+
 
 /* 404 Page in Dark Mode */
 body.dark-mode .error-404-section h1 {
@@ -307,7 +353,7 @@ body.dark-mode .portfolio-section > p {
     color: var(--dark-text-body);
 }
 
-/* --- Accessibility Enhancements --- NEW --- */
+/* --- Accessibility Enhancements --- */
 /* Clearer Focus States */
 a:focus-visible,
 button:focus-visible,
@@ -318,10 +364,9 @@ select:focus-visible,
 .sidebar-close:focus-visible,
 .sidebar-toggle:focus-visible,
 .contact-form input[type="file"]:focus-visible + .file-chosen::before {
-  outline: 3px solid var(--accent-bold) !important; /* Ensure visibility */
-  outline-offset: 2px !important;
-  box-shadow: 0 0 0 5px rgba(255, 140, 66, 0.3) !important; /* Softer glow */
-  /* z-index: 9999; /* If needed to bring focus outline on top of other elements */
+  outline: 3px solid var(--accent-bold); 
+  outline-offset: 2px; 
+  box-shadow: 0 0 0 4px rgba(255, 140, 66, 0.3); 
 }
 
 body.dark-mode a:focus-visible,
@@ -333,14 +378,13 @@ body.dark-mode .filter-button:focus-visible,
 body.dark-mode .sidebar-close:focus-visible,
 body.dark-mode .sidebar-toggle:focus-visible,
 body.dark-mode .contact-form input[type="file"]:focus-visible + .file-chosen::before {
-  outline-color: var(--dark-accent-bold) !important;
-  box-shadow: 0 0 0 5px rgba(255, 140, 66, 0.4) !important;
+  outline-color: var(--dark-accent-bold);
+  box-shadow: 0 0 0 4px rgba(255, 140, 66, 0.4); 
 }
 
-/* Minimal fallback for browsers not fully supporting :focus-visible or for general :focus */
 a:focus, button:focus, input:focus, textarea:focus, select:focus {
-    outline-style: dotted; /* A subtle default if no other focus style is caught */
-    outline-width: 1px;
+    outline-style: solid;
+    outline-width: 1px; 
     outline-color: var(--accent-grounded);
 }
 body.dark-mode a:focus, 
@@ -350,13 +394,33 @@ body.dark-mode textarea:focus,
 body.dark-mode select:focus {
     outline-color: var(--dark-accent-grounded);
 }
+*:focus:not(:focus-visible) {
+  outline: none; 
+}
+
+/* Page Headline Style (for About page) */
+.page-headline {
+    font-size: var(--h3-font-size); 
+    font-weight: 600;
+    color: var(--accent-bold); 
+    text-align: center;
+    margin-top: calc(var(--spacing-sm) * -0.5); 
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+    padding-bottom: var(--spacing-xs); 
+}
+body.dark-mode .page-headline {
+    color: var(--dark-accent-bold);
+}
 
 
-/* --- Brand Values Section (for about.html) --- NEW --- */
+/* --- Brand Values Section (for about.html) --- */
 .about-values { 
     text-align: center;
-    /* Padding can be inherited if nested in .about-section or defined here if standalone */
-    /* Example if standalone: padding: var(--spacing-xl) var(--spacing-md); */
 }
 .values-grid {
     display: grid;
@@ -364,6 +428,7 @@ body.dark-mode select:focus {
     gap: var(--spacing-lg);
     margin-top: var(--spacing-xl);
     text-align: left;
+    counter-reset: value-counter; 
 }
 .value-item {
     background-color: var(--background-light); 
@@ -371,17 +436,29 @@ body.dark-mode select:focus {
     border-radius: var(--spacing-xs);
     box-shadow: 0 5px 15px var(--shadow-light);
     border: 1px solid var(--border-color);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 .value-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px var(--shadow-medium);
+    transform: translateY(-8px) scale(1.02); 
+    box-shadow: 0 15px 30px var(--shadow-medium);
+    border-color: var(--accent-bold);
 }
 .value-item h3 {
     color: var(--accent-bold);
     font-size: var(--h3-font-size); 
     margin-bottom: var(--spacing-sm);
 }
+.value-item h3::before { 
+    counter-increment: value-counter; 
+    content: counter(value-counter) ". "; 
+    color: var(--accent-grounded);
+    font-weight: 700;
+    margin-right: 8px;
+}
+body.dark-mode .value-item h3::before {
+    color: var(--dark-accent-grounded);
+}
+
 .value-item p {
     font-size: var(--p-font-size);
     color: var(--text-body);
@@ -394,11 +471,56 @@ body.dark-mode .value-item {
     box-shadow: 0 5px 15px var(--dark-shadow-light);
     border-color: var(--dark-border-color);
 }
+body.dark-mode .value-item:hover {
+    border-color: var(--dark-accent-bold);
+}
 body.dark-mode .value-item h3 {
     color: var(--dark-accent-bold);
 }
 body.dark-mode .value-item p {
     color: var(--dark-text-body);
+}
+
+/* Pull Quote Style */
+.pull-quote {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    font-style: italic;
+    font-weight: 500; 
+    color: var(--accent-bold);
+    text-align: center;
+    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-md);
+    max-width: 70%;
+    border-left: 5px solid var(--accent-bold);
+    border-right: 5px solid var(--accent-bold);
+    background-color: rgba(0,0,0,0.02); 
+    border-radius: var(--spacing-xs);
+}
+body.dark-mode .pull-quote {
+    color: var(--dark-accent-bold);
+    border-left-color: var(--dark-accent-bold);
+    border-right-color: var(--dark-accent-bold);
+    background-color: rgba(255,255,255,0.03); 
+}
+
+/* Philosophy Subsections Styling */
+.philosophy-section h3 {
+    margin-top: var(--spacing-lg); 
+    margin-bottom: var(--spacing-sm); 
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--border-color);
+    display: inline-block; 
+    color: var(--primary-brand-dark); 
+}
+body.dark-mode .philosophy-section h3 {
+    border-bottom-color: var(--dark-border-color);
+    color: var(--dark-primary-brand-dark);
+}
+.philosophy-subsection { 
+    margin-bottom: var(--spacing-lg);
+}
+.philosophy-subsection:last-child {
+    margin-bottom: 0;
 }
 
 
@@ -434,7 +556,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 { font-size: var(--h1-font-size); font-weight: 900;}
 h2 { font-size: var(--h2-font-size); font-weight: 800;}
-h3 { font-size: var(--h3-font-size); font-weight: 700;}
+
 
 p {
     font-size: var(--p-font-size);
@@ -496,7 +618,6 @@ a:hover {
 
 /* General Section Styles */
 section {
-    /* padding: var(--spacing-xxl) var(--spacing-md); Default padding for sections - overridden by specific rules below */
     max-width: 1400px;
     margin: 0 auto;
     background-color: var(--primary-brand-light); 
@@ -792,35 +913,85 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     background-attachment: scroll; 
     box-sizing: border-box; 
 }
-
-.hero-section h1 {
-    font-size: var(--h1-font-size);
+.hero-title {
+    font-size: var(--h1-font-size); 
     margin-bottom: var(--spacing-md);
-    color: var(--primary-brand-light);
+    color: var(--primary-brand-light); 
     font-weight: 900;
-    line-height: 1.1;
+    line-height: 1.2; 
     text-shadow: 0 4px 8px var(--shadow-medium);
     max-width: 900px;
+    white-space: nowrap; 
+    overflow: visible; 
 }
+.hero-title .hero-word {
+    display: inline-block; 
+    margin-right: 0.25em; 
+}
+.hero-title .hero-word:last-child {
+    margin-right: 0;
+}
+
+.hero-title .hero-letter {
+    display: inline-block; 
+    opacity: 0;
+    transform: translateY(30px);
+    animation: letterFadeIn 0.5s forwards;
+}
+.hero-title .hero-space { 
+    opacity: 1; 
+    transform: translateY(0);
+    animation: none !important; 
+}
+
+
+@keyframes letterFadeIn { 
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 .hero-section .tagline {
     font-size: var(--h3-font-size);
     margin-bottom: var(--spacing-xs);
     color: rgba(255, 255, 255, 0.95);
     font-weight: 300;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 0.7s 1s forwards; 
 }
-
 .hero-section .slogan {
     font-size: var(--h3-font-size);
     font-weight: 500;
     margin-bottom: var(--spacing-xl);
     color: var(--primary-brand-light);
     text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 0.7s 1.2s forwards; 
 }
+.hero-section .hero-button { 
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSlideUp 0.7s 1.4s forwards; 
+}
+.hero-section .hero-button.secondary {
+    animation-delay: 1.55s; 
+}
+
+@keyframes fadeInSlideUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 
 /* --- Homepage Specific Sections & Other Page Top Sections Padding --- */
 .homepage-section:not(.hero-section), 
-.about-section, /* This includes .about-values if it's nested or has .about-section class */
+.about-section, 
 .services-section, 
 .portfolio-section, 
 .contact-section, 
@@ -829,12 +1000,12 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     padding-bottom: var(--spacing-xxl); 
     padding-left: var(--spacing-md);
     padding-right: var(--spacing-md);
-    max-width: 1400px; /* Ensuring these sections also have a max-width if not already there */
-    margin: 0 auto; /* Centering */
+    max-width: 1400px; 
+    margin: 0 auto; 
 }
 
 
-.homepage-section {
+.homepage-section { 
     max-width: 1400px;
     margin: 0 auto;
 }
@@ -891,14 +1062,49 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     padding: var(--spacing-lg);
     text-align: left;
     box-shadow: 0 5px 20px var(--shadow-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     border: 1px solid var(--border-color);
+    position: relative; 
+    padding-left: calc(var(--spacing-lg) + 30px); 
+}
+.service-summary-item::before { 
+    content: '';
+    position: absolute;
+    left: var(--spacing-lg);
+    top: calc(var(--spacing-lg) + 5px); 
+    width: 20px;
+    height: 20px;
+    background-color: var(--accent-bold);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.service-summary-item[data-service-icon="motion"]::before {
+    clip-path: polygon(0% 20%, 60% 20%, 60% 0%, 100% 50%, 60% 100%, 60% 80%, 0% 80%); 
+}
+.service-summary-item[data-service-icon="digital"]::before {
+    border-radius: 3px; 
+    transform: rotate(15deg);
+}
+.service-summary-item[data-service-icon="product"]::before {
+    border-radius: 50%; 
+}
+.service-summary-item[data-service-icon="immersive"]::before {
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%); 
 }
 
+
 .service-summary-item:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
     box-shadow: 0 10px 25px var(--shadow-medium);
+    border-color: var(--accent-bold);
 }
+.service-summary-item:hover::before {
+    transform: scale(1.2) rotate(10deg);
+    background-color: var(--primary-brand-dark);
+}
+body.dark-mode .service-summary-item:hover::before {
+    background-color: var(--dark-primary-brand-light);
+}
+
 
 .service-summary-item h3 {
     font-size: var(--h3-font-size);
@@ -926,27 +1132,30 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     margin-bottom: var(--spacing-xl);
 }
 
-/* Portfolio Item Hover Enhancement - NEW/MODIFIED */
+/* Portfolio Item Hover Enhancement */
 .portfolio-item {
     background-color: var(--primary-brand-light);
     border-radius: var(--spacing-xs);
     padding: var(--spacing-md);
     text-align: left;
     box-shadow: 0 5px 20px var(--shadow-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; /* Added border-color transition */
-    overflow: hidden; /* For image zoom */
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; 
+    overflow: hidden; 
     border: 1px solid var(--border-color);
-    opacity: 0;
-    transform: translateY(20px);
-    /* transition for fade-in is handled by JS/CSS for .is-visible */
-    will-change: opacity, transform;
+    will-change: opacity, transform; 
 }
-
-.portfolio-item.is-visible {
+.portfolio-item.fade-in-item { 
+    opacity: 0;
+    transform: translateY(30px);
+}
+.portfolio-item.is-visible { 
     opacity: 1;
     transform: translateY(0);
-    transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Ensure this exists */
+    transition-property: opacity, transform;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-out;
 }
+
 
 .portfolio-item img {
     max-width: 100%;
@@ -955,16 +1164,16 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     border-radius: var(--spacing-xs);
     margin-bottom: var(--spacing-sm);
     display: block;
-    transition: transform 0.35s ease-out; /* For the zoom effect */
+    transition: transform 0.35s ease-out; 
 }
 
 .portfolio-item:hover {
     transform: translateY(-8px);
     box-shadow: 0 12px 30px var(--shadow-medium);
-    border-color: var(--accent-bold); /* Highlight border on hover */
+    border-color: var(--accent-bold); 
 }
 .portfolio-item:hover img {
-    transform: scale(1.05); /* Subtle zoom on image */
+    transform: scale(1.05); 
 }
 
 .portfolio-item .item-link {
@@ -980,7 +1189,7 @@ body:not(.dark-mode) #theme-toggle .icon-sun { display: inline; }
     transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.2s ease;
 }
 
-.portfolio-item:hover .item-link { /* Make link more prominent on portfolio item hover */
+.portfolio-item:hover .item-link { 
     background-color: var(--accent-bold); 
     transform: translateY(-2px) scale(1.03); 
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
@@ -989,8 +1198,6 @@ body.dark-mode .portfolio-item:hover .item-link {
     background-color: var(--dark-accent-bold);
     box-shadow: 0 4px 8px var(--dark-shadow-light);
 }
-/* Original .item-link:hover is now combined or overridden by the above context-specific hover */
-
 
 .portfolio-item h3 {
     font-size: var(--h3-font-size);
@@ -1035,7 +1242,7 @@ body.dark-mode .portfolio-item:hover .item-link {
     font-size: var(--p-font-size);
 }
 
-.homepage-section.cta-section .button {
+.homepage-section.cta-section .button.cta-button { 
     background-color: var(--accent-bold);
     color: var(--primary-brand-light);
     border-color: var(--accent-bold);
@@ -1043,40 +1250,109 @@ body.dark-mode .portfolio-item:hover .item-link {
     font-size: var(--p-font-size);
     font-weight: 700;
     text-transform: none;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, letter-spacing 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+.homepage-section.cta-section .button.cta-button::before { 
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+    transition: left 0.5s ease-in-out;
 }
 
-.homepage-section.cta-section .button:hover {
+.homepage-section.cta-section .button.cta-button:hover {
     background-color: var(--primary-brand-light);
     color: var(--primary-brand-dark);
     border-color: var(--primary-brand-light);
     transform: scale(1.05) translateY(-5px);
     box-shadow: 0 15px 30px rgba(0,0,0,0.4);
+    letter-spacing: 0.08em; 
+}
+.homepage-section.cta-section .button.cta-button:hover::before {
+    left: 120%;
 }
 
 /* --- About Page Section --- */
-.about-section { /* This rule is for the main about intro and philosophy */
+.about-section { 
     text-align: center;
 }
+.page-headline {
+    font-size: var(--h3-font-size); 
+    font-weight: 600;
+    color: var(--accent-bold); 
+    text-align: center;
+    margin-top: calc(var(--spacing-sm) * -0.5); 
+    margin-bottom: var(--spacing-lg);
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.3;
+    letter-spacing: 0.03em;
+    padding-bottom: var(--spacing-xs); 
+}
+body.dark-mode .page-headline {
+    color: var(--dark-accent-bold);
+}
 
-.about-section h2 { /* Title "About KuboKanayo Creative" */
+.about-section h1 { 
+    font-size: var(--h1-font-size); 
+    margin-bottom: var(--spacing-sm); 
+}
+.about-section h2 { 
     font-size: var(--h2-font-size);
     margin-bottom: var(--spacing-lg);
 }
-
-.about-section h3 { /* Subtitle "Our Philosophy..." */
+.philosophy-section h3 {
     font-size: var(--h3-font-size);
-    margin-top: var(--spacing-xl);
-    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-lg); 
+    margin-bottom: var(--spacing-sm); 
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 2px solid var(--border-color);
+    display: inline-block; 
+    color: var(--primary-brand-dark); 
 }
-
-.about-section p { /* Paragraphs in main about and philosophy */
+body.dark-mode .philosophy-section h3 {
+    border-bottom-color: var(--dark-border-color);
+    color: var(--dark-primary-brand-dark);
+}
+.about-section p { 
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
     font-size: var(--p-font-size);
     margin-bottom: var(--spacing-sm);
     color: var(--text-body);
+}
+.philosophy-subsection { 
+    margin-bottom: var(--spacing-lg);
+}
+.philosophy-subsection:last-child {
+    margin-bottom: 0;
+}
+.pull-quote {
+    font-size: clamp(1.25rem, 4vw, 1.75rem);
+    font-style: italic;
+    font-weight: 500; 
+    color: var(--accent-bold);
+    text-align: center;
+    margin: var(--spacing-lg) auto;
+    padding: var(--spacing-md);
+    max-width: 70%;
+    border-left: 5px solid var(--accent-bold);
+    border-right: 5px solid var(--accent-bold);
+    background-color: rgba(0,0,0,0.02); 
+    border-radius: var(--spacing-xs);
+}
+body.dark-mode .pull-quote {
+    color: var(--dark-accent-bold);
+    border-left-color: var(--dark-accent-bold);
+    border-right-color: var(--dark-accent-bold);
+    background-color: rgba(255,255,255,0.03); 
 }
 
 
@@ -1267,6 +1543,23 @@ body.dark-mode .service-item h3 {
     max-width: 1200px;
     margin: 0 auto;
 }
+.contact-title-animated {
+    display: inline-block; 
+    overflow: hidden; 
+}
+.contact-title-animated span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px) scale(0.8);
+    animation: contactTitleLetterIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+@keyframes contactTitleLetterIn {
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 
 .contact-header {
     margin-bottom: var(--spacing-lg);
@@ -1306,14 +1599,14 @@ body.dark-mode .service-item h3 {
     flex-direction: column;
 }
 
-.contact-form .form-group {
-    margin-bottom: 0;
+/* Floating Label Styles */
+.floating-label-group {
+    position: relative;
+    margin-bottom: var(--spacing-md); 
 }
-
-.contact-form input[type="text"],
-.contact-form input[type="email"],
-.contact-form input[type="tel"],
-.contact-form textarea {
+.floating-label-group input,
+.floating-label-group textarea,
+.floating-label-group select {
     width: 100%;
     padding: var(--spacing-sm) var(--spacing-md);
     border: 1px solid var(--border-color);
@@ -1323,27 +1616,113 @@ body.dark-mode .service-item h3 {
     box-sizing: border-box;
     background-color: var(--background-light);
     color: var(--text-body);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+    line-height: 1.6; 
+    padding-top: calc(var(--spacing-sm) + 8px); /* Make space for floated label */
+    padding-bottom: calc(var(--spacing-sm) - 2px); /* Adjust to maintain overall height */
+}
+.floating-label-group textarea {
+    padding-top: calc(var(--spacing-sm) + 10px); /* Textareas might need more */
+    min-height: 150px; /* Adjust min-height for textarea with floating label */
 }
 
-.contact-form textarea {
-    resize: vertical;
-    min-height: 250px;
-    flex-grow: 1;
-}
-
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
+.floating-label-group label {
+    position: absolute;
+    left: var(--spacing-md);
+    top: 50%;
+    transform: translateY(-50%);
     color: var(--text-subtle);
+    font-size: var(--p-font-size);
+    pointer-events: none;
+    transition: all 0.2s ease-out;
+    background-color: var(--background-light); 
+    padding: 0 5px; 
+}
+body.dark-mode .floating-label-group label {
+    background-color: var(--dark-background-light);
+    color: var(--dark-text-subtle);
+}
+
+.floating-label-group input:focus ~ label,
+.floating-label-group input:not(:placeholder-shown) ~ label,
+.floating-label-group textarea:focus ~ label,
+.floating-label-group textarea:not(:placeholder-shown) ~ label,
+.floating-label-group select:focus ~ label,
+.floating-label-group select.label-floated ~ label, /* For JS controlled state */
+.floating-label-group select:valid:not(.placeholder-shown) ~ label { /* :valid when an option other than placeholder is chosen */
+    top: 0;
+    transform: translateY(-50%) scale(0.85);
+    font-size: var(--small-text-size);
+    color: var(--accent-bold);
+    font-weight: 500;
+}
+body.dark-mode .floating-label-group input:focus ~ label,
+body.dark-mode .floating-label-group input:not(:placeholder-shown) ~ label,
+body.dark-mode .floating-label-group textarea:focus ~ label,
+body.dark-mode .floating-label-group textarea:not(:placeholder-shown) ~ label,
+body.dark-mode .floating-label-group select:focus ~ label,
+body.dark-mode .floating-label-group select.label-floated ~ label,
+body.dark-mode .floating-label-group select:valid:not(.placeholder-shown) ~ label {
+    color: var(--dark-accent-bold);
+}
+
+.floating-label-group input::placeholder, /* Hide actual placeholder text */
+.floating-label-group textarea::placeholder {
+    color: transparent;
+}
+.floating-label-group select.placeholder-shown { /* Style for when JS adds this class */
+    color: var(--text-subtle); /* Make the select appear like a placeholder */
+}
+body.dark-mode .floating-label-group select.placeholder-shown {
+    color: var(--dark-text-subtle);
 }
 
 
-.contact-form input:focus, /* These general focus styles will be enhanced by :focus-visible */
+.contact-form select { 
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-md) center;
+    background-size: 1em;
+    padding-right: calc(var(--spacing-md) + 1.5em); 
+}
+.contact-form option {
+    color: var(--text-body); 
+    background-color: var(--primary-brand-light); 
+}
+.required-asterisk {
+    color: var(--accent-bold);
+    margin-left: 2px;
+    font-weight: 700;
+    display: inline-block; /* For animation */
+}
+.floating-label-group input:required:invalid:not(:focus):not(:placeholder-shown) + label .required-asterisk,
+.floating-label-group textarea:required:invalid:not(:focus):not(:placeholder-shown) + label .required-asterisk,
+.floating-label-group select:required:invalid:not(:focus) + label .required-asterisk {
+    animation: pulse-attention 1.5s infinite ease-in-out;
+}
+@keyframes pulse-attention {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.2); opacity: 1; }
+}
+
+
+.contact-form input:focus, 
+.contact-form select:focus,
 .contact-form textarea:focus {
     border-color: var(--accent-bold);
-    box-shadow: 0 0 0 3px rgba(255, 140, 66, 0.2); /* Original focus glow, :focus-visible will override */
-    outline: none; /* Often good to remove default if custom glow is provided */
-    background-color: var(--primary-brand-light);
+    outline: none; 
+    background-color: #fff; /* Slightly lighten on focus for light mode */
+    box-shadow: 0 0 8px rgba(255, 140, 66, 0.2);
+}
+body.dark-mode .contact-form input:focus,
+body.dark-mode .contact-form select:focus,
+body.dark-mode .contact-form textarea:focus {
+    background-color: #2a2a2a; /* Slightly lighten dark input on focus */
+    border-color: var(--dark-accent-bold);
+    box-shadow: 0 0 8px rgba(255, 140, 66, 0.3);
 }
 
 
@@ -1407,11 +1786,23 @@ body.dark-mode .service-item h3 {
     margin-bottom: 0;
 }
 
+.form-helper-text {
+    font-size: calc(var(--small-text-size) - 0.1rem);
+    color: var(--text-subtle);
+    text-align: left; 
+    margin-top: calc(var(--spacing-xs) * -0.75); /* Pull it up slightly */
+    padding-left: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+}
 
-.submit-button {
-    display: block;
-    width: 100%;
-    padding: var(--spacing-sm) var(--spacing-md);
+
+.submit-button.contact-submit-button {
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    width: auto; 
+    min-width: 220px;
+    padding: var(--spacing-sm) var(--spacing-lg); 
     margin-top: var(--spacing-lg);
     font-size: var(--p-font-size);
     text-transform: uppercase;
@@ -1421,44 +1812,94 @@ body.dark-mode .service-item h3 {
     border: 1px solid var(--accent-bold);
     border-radius: var(--spacing-xs);
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, letter-spacing 0.3s ease;
     font-weight: 700;
     box-shadow: 0 6px 15px var(--shadow-medium);
+    position: relative; 
 }
-
-
-.submit-button:hover {
+.submit-button.contact-submit-button .button-text {
+    transition: transform 0.3s ease;
+}
+.submit-button.contact-submit-button .button-icon {
+    margin-left: 10px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    display: inline-flex; 
+    align-items: center;
+}
+.submit-button.contact-submit-button:hover {
     background-color: var(--primary-brand-dark);
     border-color: var(--primary-brand-dark);
-    transform: translateY(-3px);
+    transform: translateY(-3px) scale(1.02);
     box-shadow: 0 10px 25px var(--shadow-medium);
+    letter-spacing: 0.07em;
 }
+.submit-button.contact-submit-button:hover .button-text {
+    transform: translateX(-5px); 
+}
+.submit-button.contact-submit-button:hover .button-icon {
+    opacity: 1;
+    transform: translateX(0);
+}
+.submit-button.contact-submit-button:active { 
+    transform: translateY(0px) scale(0.98);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15); 
+    filter: brightness(0.9); 
+}
+body.dark-mode .submit-button.contact-submit-button:active {
+    filter: brightness(0.8);
+}
+
 
 .contact-social-links {
     margin-top: var(--spacing-xxl);
     padding-top: var(--spacing-lg);
-    border-top: 1px solid var(--border-color);
+    border-top: 2px dashed var(--accent-grounded); /* Playful separator */
+}
+body.dark-mode .contact-social-links {
+    border-top-color: var(--dark-accent-grounded);
 }
 
 .contact-social-links h3 {
     font-size: var(--h3-font-size);
-    margin-bottom: var(--spacing-lg);
+    margin-bottom: var(--spacing-md); /* Adjusted margin */
     color: var(--primary-brand-dark);
 }
 
-.contact-social-links a {
+.contact-social-links a.social-link-animated {
     margin: 0 var(--spacing-md);
     font-size: var(--p-font-size);
     display: inline-block;
     color: var(--accent-grounded);
-    transition: color 0.3s ease, transform 0.2s ease;
+    transition: color 0.3s ease, transform 0.2s ease, letter-spacing 0.3s ease;
+    position: relative;
+    padding: 5px 0;
 }
-
-.contact-social-links a:hover {
+.contact-social-links a.social-link-animated::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--accent-bold);
+    transition: width 0.3s ease;
+}
+.contact-social-links a.social-link-animated:hover {
     color: var(--accent-bold);
     text-decoration: none;
     transform: translateY(-3px);
+    letter-spacing: 0.05em;
 }
+.contact-social-links a.social-link-animated:hover::after {
+    width: 100%;
+}
+body.dark-mode .contact-social-links a.social-link-animated:hover::after {
+    background-color: var(--dark-accent-bold);
+}
+
 
 /* --- Footer --- */
 footer {
@@ -1506,6 +1947,28 @@ footer p {
     color: var(--text-body);
 }
 
+/* Scroll Fade-in Animation */
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+.fade-in-item { 
+    opacity: 0;
+    transform: translateY(30px);
+}
+.fade-in-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition-property: opacity, transform;
+    transition-duration: 0.6s;
+    transition-timing-function: ease-out;
+}
+
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 1200px) {
@@ -1529,6 +1992,14 @@ footer p {
         min-height: 90vh; 
         padding-top: calc(var(--navbar-top-offset) + var(--navbar-height-approx) + var(--spacing-md)); 
     }
+    .hero-title {
+        line-height: 1.15; 
+        white-space: normal; 
+    }
+    .hero-title .hero-word {
+        margin-right: 0.15em; 
+    }
+
     .homepage-section:not(.hero-section), 
     .about-section, 
     .services-section, 
@@ -1627,6 +2098,10 @@ footer p {
         padding: var(--spacing-xs) var(--spacing-sm);
         font-size: 0.9rem;
     }
+
+    .contact-form .form-grid { 
+        grid-template-columns: 1fr; 
+    }
 }
 
 @media (max-width: 768px) {
@@ -1650,6 +2125,10 @@ footer p {
     .hero-section {
         padding-top: calc(var(--navbar-top-offset-mobile) + var(--navbar-height-approx-mobile) + var(--spacing-md));
         min-height: 90vh; 
+    }
+    .hero-title {
+        line-height: 1.1; 
+        white-space: normal; 
     }
     .homepage-section:not(.hero-section), 
     .about-section, 
@@ -1706,13 +2185,23 @@ footer p {
         margin-bottom: var(--spacing-lg);
     }
 
-    .services-mini-grid, .portfolio-grid, .services-grid {
+    .services-mini-grid, .portfolio-grid, .services-grid, .values-grid { 
         grid-template-columns: 1fr;
         gap: var(--spacing-md);
     }
-     .service-item {
+     .service-item, .value-item { 
         padding: var(--spacing-md);
     }
+    .service-summary-item { 
+        padding-left: calc(var(--spacing-md) + 25px);
+    }
+    .service-summary-item::before {
+        left: var(--spacing-md);
+        top: calc(var(--spacing-md) + 3px);
+        width: 15px;
+        height: 15px;
+    }
+
     .service-item::after {
         font-size: 1.5rem;
         right: var(--spacing-sm);

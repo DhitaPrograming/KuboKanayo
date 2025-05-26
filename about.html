@@ -45,38 +45,53 @@
     </aside>
 
     <main id="main-content">
-        <section id="about" class="about-section">
-            <h2>About KuboKanayo Creative</h2>
-            <p>KuboKanayo Creative is a B2C-focused creative agency that builds standout brand campaigns powered by bold 2D and 3D visual storytelling. We specialize in awareness-driven strategies that help consumer brands rise above the noise and become unforgettable. From motion graphics and digital design to product-focused content and immersive brand visuals, we craft creative that moves people — and moves culture. Whether you’re launching a product or looking to reconnect with your audience, we turn your message into campaigns that resonate, engage, and drive lasting attention.</p>
+        <section id="about-intro" class="about-section">
+            <h1>We Are KuboKanayo Creative</h1>
+            <p class="page-headline">Designed to Disrupt - Crafted to Captivate</p>
+            <p>KuboKanayo Creative is a B2C-focused creative agency that builds standout brand campaigns powered by bold 2D and 3D visual storytelling. We specialize in awareness-driven strategies that help consumer brands rise above the noise and become unforgettable. From motion graphics and digital design to product-focused content and immersive brand visuals, we craft creative that moves people --- and moves culture.</p>
+            <p>Whether you're launching a product or looking to reconnect with your audience, we turn your message into campaigns that resonate, engage, and drive lasting attention. Our work has consistently delivered measurable results, including increased brand recall and boosted engagement rates.</p>
         </section>
 
         <section id="brand-values" class="about-section about-values">
-            <h2>Our Brand Values</h2>
+            <h2>Brand Values</h2>
             <div class="values-grid">
                 <div class="value-item">
                     <h3>Disruption</h3>
-                    <p>We don’t play it safe. We break patterns, stop the scroll, and turn heads with ideas that challenge the expected and demand attention.</p>
+                    <p>We don't play it safe. We break patterns, stop the scroll, and turn heads with ideas that challenge the expected and demand attention. Our innovative approach ensures your brand cuts through the clutter and makes a lasting impact.</p>
                 </div>
                 <div class="value-item">
                     <h3>Intention</h3>
-                    <p>Nothing is random. Every visual, every word, every movement is thoughtfully crafted to serve a purpose — whether it’s to spark a reaction, start a conversation, or drive results.</p>
+                    <p>Nothing is random. Every visual, every word, every movement is thoughtfully crafted to serve a purpose. Whether it's to spark a reaction, start a conversation, or drive results. We believe in strategic creativity that delivers tangible outcomes.</p>
                 </div>
                 <div class="value-item">
                     <h3>Culture</h3>
-                    <p>We are rooted in the now. From street style to subcultures, we design through the lens of what matters to today’s generation.</p>
+                    <p>We are rooted in the now. From street style to subcultures, we design through the lens of what matters to today’s generation. Our finger is always on the pulse of current trends, ensuring your brand resonates with contemporary audiences.</p>
                 </div>
                 <div class="value-item">
                     <h3>Emotion</h3>
-                    <p>We create stories that feel — not just look. Because real connection happens when your audience doesn’t just see your brand, they feel it.</p>
+                    <p>We create stories that feel, not just look. Because real connection happens when your audience doesn't just see your brand, they feel it. Our emotionally resonant campaigns forge authentic connections with consumers.</p>
                 </div>
             </div>
         </section>
 
-        <section class="about-section philosophy-section">
-            <h3>Our Philosophy: Kubo & Kanayo</h3>
-            <p><strong>Kubo</strong> is inspired by the warmth of a humble space, a place to think, dream, and build. In Indonesian and Filipino culture, kubo refers to a small hut or shelter, simple, grounded, yet full of life and stories.</p>
-            <p><strong>Kanayo</strong> is a name we gave meaning to, a symbol of belief, ambition, and identity. It represents the dreamer who dares, the creator who disrupts, and the soul who leads with culture.</p>
-            <p>Together, "KuboKanayo" is more than a name — it’s a mindset. A fusion of space and spirit, intention and impact. This is where stories start. Where culture speaks. Where attention becomes emotion.</p>
+        <section id="philosophy-kubokanayo" class="about-section philosophy-section">
+            <h2>Philosophy</h2>
+            
+            <div class="philosophy-subsection">
+                <h3>Kubo</h3>
+                <p>"Kubo" is inspired by the warmth of a humble space, a place to think, dream, and build. In Indonesian and Filipino culture, kubo refers to a small hut or shelter, simple, grounded, yet full of life and stories. It represents our collaborative and nurturing environment where ideas flourish.</p>
+            </div>
+            
+            <div class="philosophy-subsection">
+                <h3>Kanayo</h3>
+                <p>"Kanayo" is a name we gave meaning to, a symbol of belief, ambition, and identity. It represents the dreamer who dares, the creator who disrupts, and the soul who leads with culture. To us, "Kanayo" is not a person, it's a spirit: A mindset of moving forward with intention, standing out with emotion, and staying grounded in culture.</p>
+            </div>
+            
+            <div class="philosophy-subsection">
+                <h3>KuboKanayo</h3>
+                <p>"KuboKanoyo" is more than a name, it's a mindset. A fusion of space and spirit, intention and impact. "Kubo" represents the foundation: a humble creative space where ideas are nurtured, grounded, warm, and full of possibility. "Kanayo" is the force within: bold, curious, and unapologetically original. A symbol of the dreamer who dares to lead with emotion, culture, and disruption.</p>
+                <p>Together, "KuboKanoyo" is a creative force built for a new era. This is where stories start. Where culture speaks. Where attention becomes emotion. We leverage cutting-edge 3D rendering techniques and pioneer immersive digital experiences to bring your brand's vision to life. Our team of 2D/3D animators and creative strategists collaborates closely with clients to deliver exceptional results</p>
+            </div>
         </section>
     </main>
 
@@ -88,7 +103,7 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // --- Day/Night Mode Toggle Functionality ---
+        // Day/Night Mode Toggle Functionality
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -127,8 +142,6 @@
                 setTheme(event.matches ? 'dark' : 'light');
             }
         });
-        // --- End Day/Night Mode Toggle Functionality ---
-
 
         // Universal Sidebar functionality
         const sidebarToggle = document.querySelector('.sidebar-toggle');
@@ -153,6 +166,31 @@
                 if (sidebarMenu.classList.contains('is-open')) {
                     toggleSidebar();
                 }
+            });
+        });
+
+        // Intersection Observer for Fade-in Sections on About Page
+        document.addEventListener('DOMContentLoaded', function() {
+            const sectionsToFade = document.querySelectorAll('.about-section'); // Targets all sections with this class on the page
+
+            const sectionObserverOptions = {
+                root: null, 
+                threshold: 0.15, 
+                rootMargin: "0px 0px -50px 0px" 
+            };
+
+            const sectionObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); 
+                    }
+                });
+            }, sectionObserverOptions);
+
+            sectionsToFade.forEach(section => {
+                section.classList.add('fade-in-section'); 
+                sectionObserver.observe(section);
             });
         });
     </script>

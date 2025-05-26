@@ -44,45 +44,70 @@
             </div>
     </aside>
 
-    <section id="contact" class="contact-section">
-        <div class="contact-header">
-            <h2>Have a project?</h2>
-            <p>Get in touch today</p>
-        </div>
-
-        <form action="https://formspree.io/f/YOUR_FORMSPREE_CODE" method="POST" enctype="multipart/form-data" class="contact-form">
-            <div class="form-grid">
-                <div class="form-left">
-                    <div class="form-group">
-                        <label for="name" class="sr-only">Name</label>
-                        <input type="text" id="name" name="name" placeholder="Name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" class="sr-only">E-mail</label>
-                        <input type="email" id="email" name="email" placeholder="E-mail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone" class="sr-only">Phone</label>
-                        <input type="tel" id="phone" name="phone" placeholder="Phone">
-                    </div>
-                </div>
-                <div class="form-right">
-                    <div class="form-group message-group">
-                        <label for="message" class="sr-only">Message</label>
-                        <textarea id="message" name="message" rows="10" placeholder="Message" required></textarea>
-                    </div>
-                </div>
+    <main id="main-content">
+        <section id="contact" class="contact-section">
+            <div class="contact-header">
+                <h2 class="contact-title-animated">
+                    <span>H</span><span>a</span><span>v</span><span>e</span><span>&nbsp;</span>
+                    <span>a</span><span>&nbsp;</span>
+                    <span>p</span><span>r</span><span>o</span><span>j</span><span>e</span><span>c</span><span>t</span><span>?</span>
+                </h2>
+                <p>Get in touch today</p>
             </div>
-            <button type="submit" class="button submit-button">Send Message</button>
-        </form>
 
-        <div class="contact-social-links">
-            <h3>Or connect with us directly:</h3>
-            <a href="mailto:kubokanayocreative@gmail.com">E-mail</a>
-            <a href="https://linkedin.com/company/kubokanayo-creative" target="_blank">LinkedIn</a>
-            <a href="https://www.instagram.com/kubokanayo" target="_blank">Instagram</a>
-        </div>
-    </section>
+            <form action="https://formspree.io/f/YOUR_FORMSPREE_CODE" method="POST" enctype="multipart/form-data" class="contact-form">
+                <div class="form-grid">
+                    <div class="form-left">
+                        <div class="form-group floating-label-group">
+                            <input type="text" id="name" name="name" placeholder=" " required>
+                            <label for="name">Name<span class="required-asterisk">*</span></label>
+                        </div>
+                        <div class="form-group floating-label-group">
+                            <input type="email" id="email" name="email" placeholder=" " required>
+                            <label for="email">E-mail<span class="required-asterisk">*</span></label>
+                        </div>
+                        <div class="form-group floating-label-group">
+                            <input type="tel" id="phone" name="phone" placeholder=" ">
+                            <label for="phone">Phone</label>
+                        </div>
+                        <div class="form-group floating-label-group">
+                            <select id="budget" name="budget" required>
+                                <option value="" disabled selected class="placeholder-option"></option> 
+                                <option value="< $1,000">&lt; $1,000</option>
+                                <option value="$1,000 - $3,000">$1,000 - $3,000</option>
+                                <option value="$3,000 - $5,000">$3,000 - $5,000</option>
+                                <option value="$5,000 - $10,000">$5,000 - $10,000</option>
+                                <option value="$10,000 - $20,000">$10,000 - $20,000</option>
+                                <option value="$20,000+">$20,000+</option>
+                                <option value="Not Sure Yet">Not Sure Yet / Let's Discuss</option>
+                            </select>
+                            <label for="budget">Estimated Budget<span class="required-asterisk">*</span></label>
+                        </div>
+                    </div>
+                    <div class="form-right">
+                        <div class="form-group message-group floating-label-group">
+                            <textarea id="message" name="message" rows="10" placeholder=" " required></textarea>
+                            <label for="message">Tell us about your project...<span class="required-asterisk">*</span></label>
+                        </div>
+                        <p class="form-helper-text">The more details, the better we can tailor our ideas!</p>
+                    </div>
+                </div>
+                <button type="submit" class="button submit-button contact-submit-button">
+                    <span class="button-text">Send Message</span>
+                    <span class="button-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    </span>
+                </button>
+            </form>
+
+            <div class="contact-social-links">
+                <h3>Or connect with us directly:</h3>
+                <a href="mailto:kubokanayocreative@gmail.com" class="social-link-animated">E-mail</a>
+                <a href="https://linkedin.com/company/kubokanayo-creative" target="_blank" class="social-link-animated">LinkedIn</a>
+                <a href="https://www.instagram.com/kubokanayo" target="_blank" class="social-link-animated">Instagram</a>
+            </div>
+        </section>
+    </main>
 
     <footer>
         <p>&copy; <span id="current-year"></span> KuboKanayo Creative. All rights reserved.</p>
@@ -92,35 +117,32 @@
     <script>
         document.getElementById('current-year').textContent = new Date().getFullYear();
 
-        // --- NEW: Day/Night Mode Toggle Functionality ---
+        // Day/Night Mode Toggle Functionality
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
-        // Function to set the theme
         function setTheme(theme) {
             if (theme === 'dark') {
                 body.classList.add('dark-mode');
-                themeToggle.innerHTML = '<span class="icon-moon">🌙</span>'; // Show moon when dark
+                themeToggle.innerHTML = '<span class="icon-moon">🌙</span>';
                 localStorage.setItem('theme', 'dark');
             } else {
                 body.classList.remove('dark-mode');
-                themeToggle.innerHTML = '<span class="icon-sun">☀️</span>'; // Show sun when light
+                themeToggle.innerHTML = '<span class="icon-sun">☀️</span>'; 
                 localStorage.setItem('theme', 'light');
             }
         }
 
-        // Check for saved theme preference or system preference on load
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             setTheme(savedTheme);
         } else if (prefersDarkScheme.matches) {
-            setTheme('dark'); // Default to dark if system prefers it
+            setTheme('dark');
         } else {
-            setTheme('light'); // Default to light otherwise
+            setTheme('light');
         }
 
-        // Listen for theme toggle button click
         themeToggle.addEventListener('click', () => {
             if (body.classList.contains('dark-mode')) {
                 setTheme('light');
@@ -129,35 +151,30 @@
             }
         });
 
-        // Listen for system theme changes (optional)
         prefersDarkScheme.addEventListener('change', (event) => {
-            if (!localStorage.getItem('theme')) { // Only react if user hasn't manually set a theme
+            if (!localStorage.getItem('theme')) { 
                 setTheme(event.matches ? 'dark' : 'light');
             }
         });
-
-        // --- End Day/Night Mode Toggle Functionality ---
-
 
         // Universal Sidebar functionality
         const sidebarToggle = document.querySelector('.sidebar-toggle');
         const sidebarClose = document.querySelector('.sidebar-close');
         const sidebarMenu = document.querySelector('.sidebar-menu');
         const sidebarOverlay = document.querySelector('.sidebar-overlay');
-        const sidebarLinks = document.querySelectorAll('.sidebar-menu a'); // All links in sidebar
+        const sidebarLinks = document.querySelectorAll('.sidebar-menu a');
 
         function toggleSidebar() {
             sidebarMenu.classList.toggle('is-open');
             sidebarOverlay.classList.toggle('is-active');
-            document.body.classList.toggle('no-scroll'); // Prevent scrolling when sidebar is open
-            sidebarToggle.classList.toggle('is-open'); // Animate hamburger icon
+            document.body.classList.toggle('no-scroll'); 
+            sidebarToggle.classList.toggle('is-open');
         }
 
         sidebarToggle.addEventListener('click', toggleSidebar);
         sidebarClose.addEventListener('click', toggleSidebar);
-        sidebarOverlay.addEventListener('click', toggleSidebar); // Close when clicking outside
+        sidebarOverlay.addEventListener('click', toggleSidebar);
 
-        // Close sidebar when a link is clicked (for all sidebar links)
         sidebarLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (sidebarMenu.classList.contains('is-open')) {
@@ -165,6 +182,35 @@
                 }
             });
         });
+
+        // Contact Page Title Animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const titleSpans = document.querySelectorAll('.contact-title-animated span');
+            titleSpans.forEach((span, index) => {
+                span.style.animationDelay = `${index * 0.08}s`;
+            });
+
+            // Floating label for select budget
+            const budgetSelect = document.getElementById('budget');
+            if (budgetSelect) {
+                const budgetLabel = document.querySelector('label[for="budget"]');
+                
+                function checkBudgetSelect() {
+                    if (budgetSelect.value === "" || budgetSelect.value === null) {
+                        budgetLabel.classList.remove('label-floated'); // Ensure label is not floated if empty
+                        budgetSelect.classList.add('placeholder-shown');
+                    } else {
+                        budgetLabel.classList.add('label-floated'); // Ensure label stays floated if value exists
+                        budgetSelect.classList.remove('placeholder-shown');
+                    }
+                }
+                budgetSelect.addEventListener('change', checkBudgetSelect);
+                budgetSelect.addEventListener('focus', () => budgetLabel.classList.add('label-floated'));
+                budgetSelect.addEventListener('blur', checkBudgetSelect);
+                checkBudgetSelect(); // Initial check
+            }
+        });
+
     </script>
 </body>
 </html>
